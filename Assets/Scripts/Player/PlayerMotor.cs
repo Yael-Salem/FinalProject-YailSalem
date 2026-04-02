@@ -15,13 +15,15 @@ public class PlayerMotor : MonoBehaviour
 
     public float jumpHeight = 1f;
 
+    [Header("Sprint")]
     private bool sprinting = false;
 
+    [Header("Crouching")]
     private bool crouching = false;
-
     private bool lerpCrouch = false;
-
     private float crouchTimer = 1f;
+    
+    
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -105,4 +107,5 @@ public class PlayerMotor : MonoBehaviour
 
         speed = 5f;
     }
+
 }

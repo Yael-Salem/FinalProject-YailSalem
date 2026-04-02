@@ -10,10 +10,6 @@ public abstract class Interactable : MonoBehaviour
     {
         Interact();
     }
-    
-    protected virtual void Interact()
-    {
-        // Template function to be overriden by subclasses
-        // Declared as virtual as to not require subclasses to override
-    }
+
+    protected abstract void Interact();
 }

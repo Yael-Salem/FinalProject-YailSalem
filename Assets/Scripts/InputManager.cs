@@ -12,7 +12,6 @@ public class InputManager : MonoBehaviour
 
     private PlayerLook look;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         playerInput = new PlayerInput();
@@ -30,6 +29,8 @@ public class InputManager : MonoBehaviour
         // Press and hold for sprinting
         onFoot.Sprint.performed += ctx => motor.Sprint();
         onFoot.Sprint.canceled += ctx => motor.SprintCancel();
+        
+        
     }
 
     // Update is called once per frame
