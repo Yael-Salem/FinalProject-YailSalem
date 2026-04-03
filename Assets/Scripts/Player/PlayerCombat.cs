@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     private Camera cam;
-    
+
     public float attackDistance = 3f;
     public float attackDelay = 0.4f;
     public float attackSpeed = 1f;
@@ -12,13 +12,12 @@ public class PlayerCombat : MonoBehaviour
 
     private bool attacking = false;
     private bool readyToAttack = true;
-    private int attackCount;
 
     void Start()
     {
         cam = GetComponent<PlayerLook>().cam;
     }
-	
+
     public void Attack()
     {
         if (!readyToAttack || attacking)
@@ -26,15 +25,13 @@ public class PlayerCombat : MonoBehaviour
 
         readyToAttack = false;
         attacking = true;
-        
+
         Invoke(nameof(AttackRayCast), attackDelay);
         Invoke(nameof(ResetAttack), attackSpeed);
-        
     }
 
     public void ResetAttack()
     {
-        
         attacking = false;
         readyToAttack = true;
     }
@@ -48,5 +45,4 @@ public class PlayerCombat : MonoBehaviour
             Destroy(hit.transform.gameObject);
         }
     }
-
 }
