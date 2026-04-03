@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     private PlayerMotor motor;
 
     private PlayerLook look;
+
+    private PlayerCombat combat;
     
     void Awake()
     {
@@ -19,6 +21,8 @@ public class InputManager : MonoBehaviour
         onFoot = playerInput.OnFoot;
 
         motor = GetComponent<PlayerMotor>();
+
+        combat = GetComponent<PlayerCombat>();
 
         onFoot.Jump.performed += ctx => motor.Jump();
 
@@ -29,7 +33,11 @@ public class InputManager : MonoBehaviour
         // Press and hold for sprinting
         onFoot.Sprint.performed += ctx => motor.Sprint();
         onFoot.Sprint.canceled += ctx => motor.SprintCancel();
-        
+
+        onFoot.Attack.performed += ctx => combat.Attack();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         
     }
 

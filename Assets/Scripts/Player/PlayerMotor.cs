@@ -22,8 +22,8 @@ public class PlayerMotor : MonoBehaviour
     private bool crouching = false;
     private bool lerpCrouch = false;
     private float crouchTimer = 1f;
-    
-    
+
+ 
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -107,5 +107,6 @@ public class PlayerMotor : MonoBehaviour
 
         speed = 5f;
     }
+
 
 }
