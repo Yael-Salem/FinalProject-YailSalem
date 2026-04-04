@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class InputManager : MonoBehaviour
 {
@@ -13,12 +14,19 @@ public class InputManager : MonoBehaviour
     private PlayerLook look;
 
     private PlayerCombat combat;
+
+    private PlayerHealth health;
+    
+    // Debugging
+    private PlayerInput.DebugActions debug;
     
     void Awake()
     {
         playerInput = new PlayerInput();
 
         onFoot = playerInput.OnFoot;
+
+        debug = playerInput.Debug;
 
         motor = GetComponent<PlayerMotor>();
 
@@ -39,6 +47,13 @@ public class InputManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         
+        
+        health = GetComponent<PlayerHealth>();
+        
+        // Damage and heal tests
+        debug.Damage.performed += ctx => health.TakeDamage(Random.Range(5, 10));
+        debug.Heal.performed += ctx => health.RestoreHealth(Random.Range(5, 10));
+
     }
 
     // Update is called once per frame
@@ -55,11 +70,11 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        onFoot.Enable();
+        playerInput.Enable();
     }
 
     private void OnDisable()
     {
-        onFoot.Disable();
+        playerInput.Disable();
     }
 }
