@@ -43,6 +43,9 @@ public class InputManager : MonoBehaviour
         onFoot.Sprint.canceled += ctx => motor.SprintCancel();
 
         onFoot.Attack.performed += ctx => combat.Attack();
+        
+        onFoot.Block.performed += ctx => combat.Block();
+        onFoot.Block.canceled += ctx => combat.CancelBlock();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
