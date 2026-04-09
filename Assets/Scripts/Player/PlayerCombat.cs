@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     private Camera cam;
+    private Animator animator;
 
     public float attackDistance = 3f;
     public float attackDelay = 0.4f;
@@ -16,6 +17,8 @@ public class PlayerCombat : MonoBehaviour
     void Start()
     {
         cam = GetComponent<PlayerLook>().cam;
+
+        animator = GetComponentInChildren<Animator>(true);
     }
 
     public void Attack()
@@ -45,4 +48,19 @@ public class PlayerCombat : MonoBehaviour
             Destroy(hit.transform.gameObject);
         }
     }
+
+    // Test function for blocking animation
+    public void Block()
+    {
+        animator.Play("Weapon_Block_temp", 0, 0f);
+        animator.speed = 0f;
+
+    }
+
+    public void CancelBlock()
+    {
+        animator.speed = 1f;
+        animator.Play("Weapon_Idle");
+    }
+    
 }
