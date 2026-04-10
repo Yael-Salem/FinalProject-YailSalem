@@ -1,3 +1,5 @@
+using System;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
@@ -13,12 +15,18 @@ public class PlayerCombat : MonoBehaviour
 
     private bool attacking = false;
     private bool readyToAttack = true;
+    private bool blocking = false;
 
     void Start()
     {
         cam = GetComponent<PlayerLook>().cam;
 
         animator = GetComponentInChildren<Animator>(true);
+    }
+
+    void Update()
+    {
+        // animator.speed = blocking ? 0f : 1f;
     }
 
     public void Attack()
@@ -31,6 +39,8 @@ public class PlayerCombat : MonoBehaviour
 
         Invoke(nameof(AttackRayCast), attackDelay);
         Invoke(nameof(ResetAttack), attackSpeed);
+        
+        animator.Play("Weapon_Swing");
     }
 
     public void ResetAttack()
@@ -48,19 +58,47 @@ public class PlayerCombat : MonoBehaviour
             Destroy(hit.transform.gameObject);
         }
     }
-
-    // Test function for blocking animation
+    
     public void Block()
     {
-        animator.Play("Weapon_Block_temp", 0, 0f);
-        animator.speed = 0f;
-
+        blocking = true;
     }
-
+    
     public void CancelBlock()
     {
-        animator.speed = 1f;
-        animator.Play("Weapon_Idle");
+        blocking = false;
     }
+    
+    // Playing blocking animation
+    private void PlayBlockAnim()
+    {
+        if (!blocking)
+        {
+            animator.Play("Weapon_Block_temp", 0, 0f);
+
+            float clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
+            Invoke(nameof(FreezeBlockAnimation), clipLength);
+
+        }
+    }
+    
+    // Freezing the blocking animation at the last frame
+    private void FreezeBlockAnimation()
+    {
+        if (blocking)
+        {
+            animator.speed = 0f;
+        }
+    }
+    
+    private void CancelBlockAnim()
+    {
+        if (blocking)
+        {
+            animator.speed = 1f;
+            animator.Play("Weapon_Idle");
+        }
+    }
+
     
 }
