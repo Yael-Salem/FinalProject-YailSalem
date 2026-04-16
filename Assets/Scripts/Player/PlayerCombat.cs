@@ -26,7 +26,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
-        // animator.speed = blocking ? 0f : 1f;
+        
     }
 
     public void Attack()
@@ -62,17 +62,21 @@ public class PlayerCombat : MonoBehaviour
     public void Block()
     {
         blocking = true;
+        
+        PlayBlockAnim();
     }
     
     public void CancelBlock()
     {
         blocking = false;
+        
+        CancelBlockAnim();
     }
     
     // Playing blocking animation
     private void PlayBlockAnim()
     {
-        if (!blocking)
+        if (blocking)
         {
             animator.Play("Weapon_Block_temp", 0, 0f);
 
@@ -93,7 +97,7 @@ public class PlayerCombat : MonoBehaviour
     
     private void CancelBlockAnim()
     {
-        if (blocking)
+        if (!blocking)
         {
             animator.speed = 1f;
             animator.Play("Weapon_Idle");
