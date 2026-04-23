@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     private StateMachine stateMachine;
     private NavMeshAgent agent;
+    private Animator animator;
     
     // Getter for the agent
     public NavMeshAgent Agent
@@ -32,6 +33,8 @@ public class Enemy : MonoBehaviour
         stateMachine.Initialise();
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -67,5 +70,10 @@ public class Enemy : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void Attack()
+    {
+        animator.Play("enemy_swing");
     }
 }

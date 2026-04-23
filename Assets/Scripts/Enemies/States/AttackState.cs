@@ -37,6 +37,8 @@ public class AttackState : BaseState
                 stateMachine.ChangeState(new PatrolState());
             }
         }
+        
+        enemy.Attack();
     }
 
     public override void Exit()

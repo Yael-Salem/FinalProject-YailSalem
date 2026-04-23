@@ -49,13 +49,16 @@ public class InputManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        #region DebugControls
         
-        
+        // Test damage and heal UI
         health = GetComponent<PlayerHealth>();
         
-        // Damage and heal tests
         debug.Damage.performed += ctx => health.TakeDamage(Random.Range(5, 10));
         debug.Heal.performed += ctx => health.RestoreHealth(Random.Range(5, 10));
+
+        #endregion
 
     }
 
