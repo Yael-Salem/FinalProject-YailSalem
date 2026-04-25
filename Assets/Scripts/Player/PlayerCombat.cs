@@ -22,6 +22,7 @@ public class PlayerCombat : MonoBehaviour
         cam = GetComponent<PlayerLook>().cam;
 
         animator = GetComponentInChildren<Animator>(true);
+
     }
 
     void Update()
@@ -54,8 +55,14 @@ public class PlayerCombat : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance,
                 attackLayer))
         {
-            Debug.Log("Object hit");
-            Destroy(hit.transform.gameObject);
+            EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
+
+            if (enemy != null)
+            {
+                enemy.TakeDamage(attackDamage);
+                
+                Debug.Log(enemy.currentHealth);
+            }
         }
     }
     

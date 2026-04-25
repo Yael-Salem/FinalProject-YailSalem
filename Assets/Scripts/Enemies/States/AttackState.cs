@@ -18,6 +18,8 @@ public class AttackState : BaseState
             losePlayerTimer = 0f;
 
             moveTimer += Time.deltaTime;
+            
+            enemy.transform.LookAt(enemy.Player.transform);
 
             if (moveTimer > Random.Range(2, 8))
             {
@@ -38,7 +40,7 @@ public class AttackState : BaseState
             }
         }
         
-        enemy.Attack();
+        // enemy.Attack();
     }
 
     public override void Exit()

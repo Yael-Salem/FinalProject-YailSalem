@@ -19,6 +19,12 @@ public class Enemy : MonoBehaviour
     public Path path;
 
     private GameObject player;
+    
+    public GameObject Player
+    {
+        get => player;
+    }
+    
     public float sightDistance = 20f;
     public float fieldOfView = 85f;
     public float eyeHeight;
