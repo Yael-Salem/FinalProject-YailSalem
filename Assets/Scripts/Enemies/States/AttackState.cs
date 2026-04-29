@@ -5,7 +5,6 @@ public class AttackState : BaseState
     private float moveTimer;
     private float losePlayerTimer;
     
-    
     public override void Enter()
     {
         
@@ -39,8 +38,8 @@ public class AttackState : BaseState
                 stateMachine.ChangeState(new PatrolState());
             }
         }
-        
-        // enemy.Attack();
+
+        enemy.EnemyAttack();
     }
 
     public override void Exit()

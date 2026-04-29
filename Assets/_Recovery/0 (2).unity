@@ -714,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383463919418459452, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 49892048952254172, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}
@@ -1228,15 +1228,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465375005211193431, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 327.619
+      value: -0.489
       objectReference: {fileID: 0}
     - target: {fileID: 4465375005211193431, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.161
+      value: 0.462
       objectReference: {fileID: 0}
     - target: {fileID: 4465375005211193431, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 52.27
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4465375005211193431, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1311,6 +1311,9 @@ PrefabInstance:
       addedObject: {fileID: 1115092926}
     - targetCorrespondingSourceObject: {fileID: 7383463919418459452, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1115092931}
+    - targetCorrespondingSourceObject: {fileID: 7383463919418459452, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1115092930}
   m_SourcePrefab: {fileID: 100100000, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}
 --- !u!4 &1115092919 stripped
@@ -1366,6 +1369,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000002, y: 2.202917, z: 1.0745946}
   m_Center: {x: -0.000122010635, y: 0.10145696, z: -0.037297368}
+--- !u!114 &1115092931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115092920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 195c5f87185185844b6e5ba505cf9e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
 --- !u!1 &1210770874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7383463919418459452, guid: f72d584e8d5e8c046883d38b19dfa5a0, type: 3}

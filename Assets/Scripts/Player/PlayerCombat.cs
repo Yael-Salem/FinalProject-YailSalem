@@ -16,6 +16,12 @@ public class PlayerCombat : MonoBehaviour
     private bool attacking = false;
     private bool readyToAttack = true;
     private bool blocking = false;
+    
+    // Blocking getter
+    public bool Blocking
+    {
+        get => blocking;
+    }
 
     void Start()
     {
