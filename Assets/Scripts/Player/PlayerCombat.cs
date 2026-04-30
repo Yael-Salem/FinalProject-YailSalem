@@ -100,7 +100,7 @@ public class PlayerCombat : MonoBehaviour
     }
     
     // Freezing the blocking animation at the last frame
-    private void FreezeBlockAnimation()
+    public void FreezeBlockAnimation()
     {
         if (blocking)
         {

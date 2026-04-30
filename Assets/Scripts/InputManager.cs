@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
 
     private PlayerHealth health;
     
-    // Debugging
+    // TODO DEBUG DebugActions Reference delete later
     private PlayerInput.DebugActions debug;
     
     void Awake()
@@ -49,7 +49,8 @@ public class InputManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+        
+        // TODO DEBUG Controls delete later
         #region DebugControls
         
         // Test damage and heal UI
@@ -76,11 +77,17 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInput.Enable();
+        playerInput.OnFoot.Enable();
+        
+        // TODO DEBUG controls enable delete later
+        playerInput.Debug.Enable();
     }
 
     private void OnDisable()
     {
-        playerInput.Disable();
+        playerInput.OnFoot.Disable();
+        
+        // TODO DEBUG controls disable delete later
+        playerInput.Debug.Disable();
     }
 }

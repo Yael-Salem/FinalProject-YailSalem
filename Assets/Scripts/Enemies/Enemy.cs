@@ -32,9 +32,6 @@ public class Enemy : MonoBehaviour
 
     [Header("Combat variables")]
     
-    [SerializeField]
-    private float attackDamage = 5f;
-    
     private float attackDelay = 1f;
     private float attackDistance = 1.5f;
     private float attackSpeed = 1f;

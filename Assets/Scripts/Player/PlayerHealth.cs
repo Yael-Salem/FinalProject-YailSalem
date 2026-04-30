@@ -49,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void RestoreHealth(float healAmount)
     {
-        health += healAmount;
+        health = Mathf.Clamp(health + healAmount, 0, maxHealth);
         
         healthFraction = health / maxHealth;
 
