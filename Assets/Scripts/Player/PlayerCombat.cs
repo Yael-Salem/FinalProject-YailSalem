@@ -40,11 +40,27 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!readyToAttack || attacking)
             return;
+        
+        // Variable to store whether the enemy we are currently fighting dodged our attack or not
+        bool attackDodged = false;
+
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance,
+                attackLayer))
+        {
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
+
+            if (enemy != null)
+                attackDodged = enemy.TryDodge();
+        }
 
         readyToAttack = false;
         attacking = true;
 
-        Invoke(nameof(AttackRayCast), attackDelay);
+        // Calling on the raycast only if the enemy did not dodge our attack
+        if(!attackDodged)
+            Invoke(nameof(AttackRayCast), attackDelay);
+        
+        
         Invoke(nameof(ResetAttack), attackSpeed);
         
         animator.Play("Weapon_Swing");
@@ -61,13 +77,13 @@ public class PlayerCombat : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance,
                 attackLayer))
         {
-            EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
+            EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>(); // Refrence to enemy's health
 
-            if (enemy != null)
+            if (enemyHealth != null)
             {
-                enemy.TakeDamage(attackDamage);
+                enemyHealth.TakeDamage(attackDamage);
                 
-                Debug.Log(enemy.currentHealth);
+                Debug.Log(enemyHealth.currentHealth);
             }
         }
     }

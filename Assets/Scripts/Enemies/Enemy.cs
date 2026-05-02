@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -32,11 +34,23 @@ public class Enemy : MonoBehaviour
 
     [Header("Combat variables")]
     
+    // Attacking Variables
     private float attackDelay = 1f;
     private float attackDistance = 1.5f;
     private float attackSpeed = 1f;
     private bool attacking = false;
     private bool readyToAttack = true;
+    
+    // Doding variables
+    private bool dodging = false;
+    private bool canDodge = true;
+    private float dodgeCoolDown = 5f;
+    private float dodgeSpeed = 15f;
+    private float dodgeDuration = 0.2f;
+
+    private float dodgeTimer;
+    private float cooldownTimer;
+    private Vector3 currentDodgeDirection;
 
     public float AttackDelay => attackDelay;
 
@@ -60,6 +74,28 @@ public class Enemy : MonoBehaviour
         CanSeePlayer();
 
         currentState = stateMachine.activeState.ToString();
+        
+        // Dodging logic
+        if (dodging)
+        {
+            transform.Translate(currentDodgeDirection * dodgeSpeed * Time.deltaTime, Space.World);
+            dodgeTimer -= Time.deltaTime;
+
+            if (dodgeTimer <= 0)
+            {
+                dodging = false;
+                cooldownTimer = dodgeCoolDown;
+            }
+        }
+
+
+        if (!canDodge)
+        {
+            cooldownTimer -= Time.deltaTime;
+
+            if (cooldownTimer <= 0)
+                canDodge = true;
+        }
     }
 
     public bool CanSeePlayer()
@@ -123,5 +159,28 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    
+
+    public bool TryDodge()
+    {
+        if (!canDodge || dodging)
+            return false;
+
+        // The enemy will successfully dodge player's attack 25% of the time
+        if (Random.value < 0.25f)
+        {
+            Dodge();
+            return true;
+        }
+
+        return false;
+    }
+
+    private void Dodge()
+    {
+        dodging = true;
+        canDodge = false;
+        dodgeTimer = dodgeDuration;
+
+        currentDodgeDirection = Random.value > 0.5f ? transform.right : -transform.right;
+    }
 }
