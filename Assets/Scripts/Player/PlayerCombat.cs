@@ -38,7 +38,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void Attack()
     {
-        if (!readyToAttack || attacking)
+        if (!readyToAttack || attacking || Time.timeScale == 0f)
             return;
         
         // Variable to store whether the enemy we are currently fighting dodged our attack or not
@@ -90,6 +90,9 @@ public class PlayerCombat : MonoBehaviour
     
     public void Block()
     {
+        if (Time.timeScale == 0f)
+            return;
+        
         blocking = true;
         
         PlayBlockAnim();
@@ -107,7 +110,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (blocking)
         {
-            animator.Play("Weapon_Block_temp", 0, 0f);
+            animator.Play("Weapon_Block", 0, 0f);
 
             float clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
             Invoke(nameof(FreezeBlockAnimation), clipLength);
