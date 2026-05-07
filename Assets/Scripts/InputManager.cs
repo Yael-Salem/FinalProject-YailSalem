@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
 
     public PlayerInput.OnFootActions onFoot;
 
+    public PlayerInput.UIActions uiActions;
+
     private PlayerMotor motor;
 
     private PlayerLook look;
@@ -26,6 +28,9 @@ public class InputManager : MonoBehaviour
 
         onFoot = playerInput.OnFoot;
 
+        uiActions = playerInput.UI;
+
+        // TODO DEBUG Delete this line
         debug = playerInput.Debug;
 
         motor = GetComponent<PlayerMotor>();
@@ -49,6 +54,9 @@ public class InputManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        onFoot.OpenInventory.performed += ctx => HandleInventoryInput();
+        uiActions.CloseInventory.performed += ctx => HandleInventoryInput();
         
         // TODO DEBUG Controls delete later
         #region DebugControls
@@ -78,6 +86,7 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
         playerInput.OnFoot.Enable();
+        playerInput.UI.Enable();
         
         // TODO DEBUG controls enable delete later
         playerInput.Debug.Enable();
@@ -86,8 +95,27 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         playerInput.OnFoot.Disable();
+        playerInput.UI.Disable();
         
         // TODO DEBUG controls disable delete later
         playerInput.Debug.Disable();
+    }
+
+    // Function to handle disabling player movement when they open the inventory and then re-enabling it once they close the inventory
+    public void HandleInventoryInput()
+    {
+        InventoryManager.Instance.ToggleInventory();
+
+        if (onFoot.enabled)
+        {
+            onFoot.Disable();
+            uiActions.Enable();
+        }
+
+        else
+        {
+            uiActions.Disable();
+            onFoot.Enable();
+        }
     }
 }

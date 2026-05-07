@@ -6,8 +6,7 @@ using Unity.VisualScripting;
 public class Note : Interactable
 {
     [SerializeField]
-    [TextArea(10,20)]
-    private string noteContent;
+    private ItemData itemData;
 
     [Header("UI References")]
     [SerializeField] private GameObject notePanel;
@@ -17,22 +16,24 @@ public class Note : Interactable
     [SerializeField] private GameObject closeButton;
 
     private int currentPage = 0;
-    
+
     protected override void Interact()
     {
-        displayText.text = noteContent;
+        if (itemData == null)
+            return;
+        
+        OpenNote(itemData);
+    }
+    
+    protected void OpenNote(ItemData data)
+    {
+        itemData = data;
+        
+        displayText.text = itemData.fullNoteContent;
         
         notePanel.SetActive(true);
-        
-        // resetting then adding onClick listeners for each button through the code rather than having to set it manually through the editor for each note
-        nextButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
-        nextButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(NextPage);
-        
-        prevButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
-        prevButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(PrevPage);
-        
-        closeButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
-        closeButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(CloseNote);
+       
+        SetupButtons();
         
         Canvas.ForceUpdateCanvases();
         UpdatePageDisplay();
@@ -41,14 +42,41 @@ public class Note : Interactable
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+    
+    // Function to reset and add lisenters to all the buttons
+    private void SetupButtons()
+    {
+        nextButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
+        nextButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(NextPage);
+        
+        prevButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
+        prevButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(PrevPage);
+        
+        closeButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
+        closeButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(CloseNote);
+    }
 
     public void CloseNote()
     {
         notePanel.SetActive(false);
+
+        // Checking if we in UI
+        if (GetComponent<RectTransform>() != null)
+        {
+            InventoryManager.Instance.inventoryPanel.SetActive(true);
+        }
         
-        Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        else
+        {
+            InventoryManager.Instance.AddItem(itemData);
+            
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            
+            Destroy(gameObject);
+        }
+        
     }
 
     public void NextPage()
@@ -75,6 +103,13 @@ public class Note : Interactable
         
         nextButton.SetActive(currentPage < displayText.textInfo.pageCount - 1);
         prevButton.SetActive(currentPage > 0);
+    }
+
+    public void OpenFromInventory(ItemData data)
+    {
+        itemData = data;
+        
+        Interact();
     }
 }
 

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
+  m_Name: Note00_Test
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: TestNote
+  itemDescription: test description
+  fullNoteContent: "This is a test note\ni need something to fill the space so pretend
+    cool lore is here\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. \n\nDuis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nRandom
+    thought: Why is it that when we lose something, it's always in the last place
+    we look? Well, obviously, because once we find it, we stop looking. But that
+    doesn't make it any less annoying. \n\nThe quick brown fox jumps over the lazy
+    dog. Then the dog woke up and wondered why a fox was jumping over him in the
+    first place. It was a very confusing Tuesday for everyone involved. \n\n1234567890.
+    Counting is fun. Sometimes I like to count the pixels on the screen, but then
+    I get a headache. Did you know that if you type \"random\" enough times, it starts
+    to look like a fake word? Random. Random. Random. Random. Random. \n\nFinal page
+    test! If you can see this, your pagination system is officially working. High
+    five. Now go make some cool gameplay. \n"
+  type: 1
+  icon: {fileID: 0}
