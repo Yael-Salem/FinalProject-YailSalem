@@ -118,4 +118,31 @@ public class InputManager : MonoBehaviour
             onFoot.Enable();
         }
     }
+
+    public void SetCutsceneMode(bool inCutscene)
+    {
+        if (inCutscene)
+        {
+            // Stopping all player movement if they are in a cutscene
+            onFoot.Disable();
+            uiActions.Enable();
+            
+            motor.ProcessMove(Vector2.zero);
+            look.ProcessLook(Vector2.zero);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+        }
+
+        else
+        {
+            uiActions.Disable();
+            onFoot.Enable();
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+        }
+    }
 }

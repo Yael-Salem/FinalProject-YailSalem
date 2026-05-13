@@ -1,0 +1,12 @@
+{
+    "cutscenes":[
+        {
+            "id": "start_scene",
+            "speakerName": "Christian",
+            "sentences":[
+                "Where am I?",
+                "What is this place?"
+            ]
+        }
+    ]
+}
