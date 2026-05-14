@@ -5,13 +5,21 @@ public class Dialogue
 {
     public string id;
 
-    public string speakerName;
-
-    public string[] sentences;
+    public List<DialogueLine> lines; 
 }
 
 [System.Serializable]
 public class DialogueDatabase
 {
     public List<Dialogue> cutscenes;
+}
+
+[System.Serializable]
+public class DialogueLine
+{
+    public string speaker;
+
+    public string text;
+
+    public string lookTargetTag; // In case we need the player to look a certain direction
 }

@@ -14,18 +14,18 @@ public class CutsceneTrigger : MonoBehaviour
         if (other.CompareTag("Player") && other.TryGetComponent<InputManager>(out var inputManager))
         {
             activeInputManager = inputManager;
-            StartCutscene();
+            StartCutscene(other.gameObject);
             GetComponent<Collider>().enabled = false;
         }
     }
 
-    private void StartCutscene()
+    private void StartCutscene(GameObject player)
     {
         isCutsceneActive = true;
         activeInputManager.SetCutsceneMode(true);
         activeInputManager.uiActions.Submit.performed += OnSubmitPressed;
         
-        DialogueManager.Instance.StartDialogue(cutsceneId, EndCutscene);
+        DialogueManager.Instance.StartDialogue(cutsceneId, player, EndCutscene);
     }
 
     private void EndCutscene()

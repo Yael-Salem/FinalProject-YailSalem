@@ -22,9 +22,11 @@ public class DialogueManager : MonoBehaviour
     public string scriptFileName = "script.json";
 
     private Dictionary<string, Dialogue> dialogueFromFile = new Dictionary<string, Dialogue>();
-    private Queue<string> sentences = new Queue<string>();
+    private Queue<DialogueLine> sentences = new Queue<DialogueLine>();
     private bool isTyping = false;
+    private DialogueLine currentData;
     private string currentSentence;
+    private PlayerLook playerLookController; // Controlling the player's head movement if we need them to look a certain way
     private System.Action onDialogueCompleteCallback;
 
     private void Awake()
@@ -67,7 +69,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(string dialogueId, System.Action onComplete)
+    public void StartDialogue(string dialogueId,GameObject player, System.Action onComplete)
     {
         if (!dialogueFromFile.TryGetValue(dialogueId, out Dialogue dialogue))
         {
@@ -76,22 +78,16 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        if (player != null)
+            player.TryGetComponent<PlayerLook>(out playerLookController);
+
         onDialogueCompleteCallback = onComplete;
         dialogueBoxPanel.SetActive(true);
-
-        if (string.IsNullOrEmpty(dialogue.speakerName))
-            speakerBoxPanel.SetActive(false);
-
-        else
-        {
-            speakerBoxPanel.SetActive(true);
-            speakerNameText.text = dialogue.speakerName;
-        }
         
         sentences.Clear();
         
-        foreach(string sentence in dialogue.sentences)
-            sentences.Enqueue(sentence);
+        foreach(DialogueLine line in dialogue.lines)
+            sentences.Enqueue(line);
 
         DisplayNextSentence();
     }
@@ -101,7 +97,7 @@ public class DialogueManager : MonoBehaviour
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueText.text = currentSentence;
+            dialogueText.text = currentData.text;
             isTyping = false;
             return;
         }
@@ -112,12 +108,35 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        currentSentence = sentences.Dequeue();
+        currentData = sentences.Dequeue();
+        currentSentence = currentData.text;
+
+        if (string.IsNullOrEmpty(currentData.speaker))
+            speakerBoxPanel.SetActive(false);
+
+        else
+        {
+            speakerBoxPanel.SetActive(true);
+            speakerNameText.text = currentData.speaker;
+        }
+
+        if (playerLookController != null)
+        {
+            if (!string.IsNullOrEmpty(currentData.lookTargetTag))
+            {
+                Transform target = GameObject.FindWithTag(currentData.lookTargetTag)?.transform;
+                playerLookController.SetCutsceneTrigger(target);
+            }
+        }
+        
         StartCoroutine(TypeSentence(currentSentence));
     }
     
     private void EndDialogue()
     {
+        if(playerLookController != null)
+            playerLookController.ClearCutsceneLookTarget();
+        
         dialogueBoxPanel.SetActive(false);
         onDialogueCompleteCallback?.Invoke();
     }

@@ -2,10 +2,27 @@
     "cutscenes":[
         {
             "id": "start_scene",
-            "speakerName": "Christian",
-            "sentences":[
-                "Where am I?",
-                "What is this place?"
+            "lines": [
+                {
+                    "speaker": "Christian",
+                    "text": "W-where am I?",
+                    "lookTargetTag": ""
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "What is this place?",
+                    "lookTargetTag": "cutscene_door"
+                }
+            ]
+        },
+        {
+            "id": "joke_scene",
+            "lines": [
+                {
+                    "speaker": "Christian",
+                    "text": "What the hell big fella",
+                    "lookTargetTag": "cutscene_enemy"
+                }
             ]
         }
     ]

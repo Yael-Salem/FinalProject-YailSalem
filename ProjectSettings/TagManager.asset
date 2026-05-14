@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - cutscene_door
+  - cutscene_enemy
   layers:
   - Default
   - TransparentFX
