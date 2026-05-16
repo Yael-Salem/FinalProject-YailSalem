@@ -55,4 +55,15 @@ public class PlayerHealth : MonoBehaviour
 
         frontHealthBar.fillAmount = healthFraction;
     }
+    
+    // Function for the SaveManager to set the player's health based on the value inside the save file
+    public void SetCurrentHealth(float loadedHealthValue)
+    {
+        health = Mathf.Clamp(loadedHealthValue, 0, maxHealth);
+        healthFraction = health / maxHealth;
+
+        if (frontHealthBar != null)
+            frontHealthBar.fillAmount = healthFraction;
+
+    }
 }

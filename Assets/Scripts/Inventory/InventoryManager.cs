@@ -48,5 +48,13 @@ public class InventoryManager : MonoBehaviour
     {
         items.Add(item);
     }
+
+    public void ClearInventory()
+    {
+        items.Clear();
+        
+        if(uiScript != null)
+            uiScript.RefreshUI();
+    }
     
 }

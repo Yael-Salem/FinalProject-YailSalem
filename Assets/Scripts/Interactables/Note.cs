@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
@@ -5,6 +6,11 @@ using Unity.VisualScripting;
 
 public class Note : Interactable
 {
+    [Header("Save data")] 
+    [ContextMenuItem("Generate New ID", "GenerateSaveID")]
+    [SerializeField] private string noteId;
+    
+    
     [SerializeField]
     private ItemData itemData;
 
@@ -24,7 +30,15 @@ public class Note : Interactable
         
         OpenNote(itemData);
     }
-    
+
+    private void Start()
+    {
+        // Checking if the note has already been collected and destroying it right away if it has
+        if(SaveManager.Instance != null && SaveManager.Instance.playerSaveData.collectiblesIDs.Contains(noteId))
+            Destroy(gameObject);
+    }
+
+
     protected void OpenNote(ItemData data)
     {
         itemData = data;
@@ -43,7 +57,7 @@ public class Note : Interactable
         Cursor.visible = true;
     }
     
-    // Function to reset and add lisenters to all the buttons
+    // Function to reset and add listeners to all the buttons
     private void SetupButtons()
     {
         nextButton.GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
@@ -60,7 +74,7 @@ public class Note : Interactable
     {
         notePanel.SetActive(false);
 
-        // Checking if we in UI
+        // Checking if we opened the note from the inventory UI
         if (GetComponent<RectTransform>() != null)
         {
             InventoryManager.Instance.inventoryPanel.SetActive(true);
@@ -68,6 +82,10 @@ public class Note : Interactable
         
         else
         {
+            if(SaveManager.Instance != null && !string.IsNullOrEmpty(noteId))
+                SaveManager.Instance.playerSaveData.collectiblesIDs.Add(noteId);
+            
+            
             InventoryManager.Instance.AddItem(itemData);
             
             Time.timeScale = 1;
@@ -110,6 +128,11 @@ public class Note : Interactable
         itemData = data;
         
         Interact();
+    }
+
+    private void GenerateSaveID()
+    {
+        noteId = System.Guid.NewGuid().ToString();
     }
 }
 

@@ -67,6 +67,24 @@ public class InputManager : MonoBehaviour
         debug.Damage.performed += ctx => health.TakeDamage(Random.Range(5, 10));
         debug.Heal.performed += ctx => health.RestoreHealth(Random.Range(5, 10));
 
+        debug.Save.performed += ctx =>
+        {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.SaveGame(transform.position);
+                Debug.Log("DEBUG: Game saved");
+            }
+        };
+
+        debug.Load.performed += ctx =>
+        {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.LoadGame();
+                Debug.Log("DEBUG: Game Loaded");
+            }
+        };
+
         #endregion
 
     }
