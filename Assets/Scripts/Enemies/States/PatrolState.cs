@@ -6,9 +6,10 @@ public class PatrolState : BaseState
    public float waitTimer;
    
    
-   
    public override void Enter()
    {
+      if (enemy.path != null && enemy.path.waypoints.Count > 0)
+         enemy.Agent.SetDestination(enemy.path.waypoints[waypointIndex].position);
    }
 
    public override void Perform()
@@ -16,7 +17,7 @@ public class PatrolState : BaseState
       PatrolCycle();
       
       if(enemy.CanSeePlayer())
-         stateMachine.ChangeState(new AttackState());
+         stateMachine.ChangeState(stateMachine.attackState);
    }
 
    public override void Exit()
@@ -25,23 +26,24 @@ public class PatrolState : BaseState
 
    public void PatrolCycle()
    {
-      if (enemy.Agent.remainingDistance < 0.2)
+      if (enemy.path == null || enemy.path.waypoints.Count == 0)
+         return;
+
+      if (!enemy.Agent.pathPending && enemy.Agent.remainingDistance < 0.2)
       {
          waitTimer += Time.deltaTime;
 
          if (waitTimer > 3)
          {
-            if (waypointIndex < enemy.path.waypoints.Count - 1)
-               waypointIndex++;
-
-            else
-               waypointIndex = 0;
+            // Making the enemy move to a random waypoint in their path each
+            waypointIndex = Random.Range(0, enemy.path.waypoints.Count);
 
             enemy.Agent.SetDestination(enemy.path.waypoints[waypointIndex].position);
 
             waitTimer = 0f;
          }
-        
       }
+        
+      
    }
 }
