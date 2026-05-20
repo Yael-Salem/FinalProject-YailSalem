@@ -22,7 +22,11 @@ public class EnemyHealth : MonoBehaviour
       currentHealth -= damage;
 
       currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
-
+      
+      // Forcing the enemy to aggro when hit
+      if(TryGetComponent<Enemy>(out var enemyAI))
+         enemyAI.ForceAggro();
+      
       if (currentHealth <= 0)
       {
          isDead = true;

@@ -19,7 +19,7 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.02f;
     
     // File where we will be reading the text from
-    public string scriptFileName = "script.json";
+    private const string ScriptFileName = "script.json";
 
     private Dictionary<string, Dialogue> dialogueFromFile = new Dictionary<string, Dialogue>();
     private Queue<DialogueLine> sentences = new Queue<DialogueLine>();
@@ -43,7 +43,7 @@ public class DialogueManager : MonoBehaviour
 
     private void LoadDialogueData()
     {
-        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, scriptFileName);
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, ScriptFileName);
 
         if (File.Exists(filePath))
         {

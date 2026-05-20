@@ -13,13 +13,32 @@ public class AttackState : BaseState
 
         movementOffSet = Random.insideUnitSphere * 2.0f;
         movementOffSet.y = 0;
+
+        losePlayerTimer = 0f;
     }
 
     public override void Perform()
     {
+        // Checking if the player is Hiding and not attacking if they are
+        if (enemy.Player.GetComponent<PlayerHiding>().isHiding)
+        {
+            stateMachine.ChangeState(stateMachine.searchState);
+            return;
+        }
+        
         float distanceToPlayer = Vector3.Distance(enemy.transform.position, enemy.Player.transform.position);
 
-        if (enemy.CanSeePlayer() || distanceToPlayer <= enemy.AttackDistance + 1.5f)
+        // Calculate line-of-sight vector from enemy eyes to player eyes
+        Vector3 startPos = enemy.transform.position + Vector3.up * enemy.eyeHeight;
+        Vector3 targetPos = enemy.Player.transform.position + Vector3.up * enemy.eyeHeight;
+        Vector3 targetDirection = targetPos - startPos;
+
+        // Check if a solid object physically blocks the view to the player
+        bool wallIsBlocking =
+            Physics.Raycast(startPos, targetDirection.normalized, out RaycastHit hit, enemy.sightDistance) &&
+            !hit.collider.CompareTag("Player");
+
+        if (!wallIsBlocking)
         {
             losePlayerTimer = 0f;
             moveTimer += Time.deltaTime;
@@ -33,25 +52,27 @@ public class AttackState : BaseState
 
             Vector3 targetLook = enemy.Player.transform.position;
             targetLook.y = enemy.transform.position.y;
-
             enemy.transform.LookAt(targetLook);
-
-            // Chasing the player
-            enemy.Agent.SetDestination(enemy.Player.transform.position);
-
+            
+            if (distanceToPlayer > enemy.AttackDistance - 0.4f)
+                enemy.Agent.SetDestination(enemy.Player.transform.position);
+            else
+                enemy.Agent.ResetPath();
 
             if (distanceToPlayer <= enemy.AttackDistance + 1.0f)
-            {
                 enemy.EnemyAttack();
-            }
         }
 
         else
         {
-            // changing to the search state if the enemy has lost the player
-            stateMachine.ChangeState(stateMachine.searchState);
+            losePlayerTimer += Time.deltaTime;
+            enemy.Agent.SetDestination(enemy.LastKnownPosition);
+
+            if (losePlayerTimer > 3.0f)
+                stateMachine.ChangeState(stateMachine.searchState);
         }
     }
+
 
     public override void Exit()
     {

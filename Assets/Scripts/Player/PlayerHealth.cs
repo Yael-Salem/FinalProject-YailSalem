@@ -13,11 +13,17 @@ public class PlayerHealth : MonoBehaviour
 
     private PlayerCombat playerCombat;
     
-    [Header("UI Elements")]
+    [Header("Health UI Elements")]
     public float maxHealth = 100f;
     private float healthFraction;
 
     public Image frontHealthBar;
+
+    [Header("Game Over UI")] 
+    [SerializeField] private GameObject gameOverScreen;
+
+    [SerializeField] private Button loadGameBtn;
+    [SerializeField] private Button quitGameBtn;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,6 +32,10 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
 
         playerCombat = GetComponent<PlayerCombat>();
+        
+        // Making the game over screen invisible when the game start
+        if(gameOverScreen != null)
+            gameOverScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -45,6 +55,72 @@ public class PlayerHealth : MonoBehaviour
         healthFraction = health / maxHealth;
 
         frontHealthBar.fillAmount = healthFraction;
+
+        if (health <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        if (gameOverScreen != null)
+        {
+            if (loadGameBtn != null)
+            {
+                loadGameBtn.onClick.RemoveAllListeners();
+                
+                loadGameBtn.onClick.AddListener(() =>
+                {
+                    OnLoadButtonPressed();
+                } );
+            }
+
+            if (quitGameBtn != null)
+            {
+                quitGameBtn.onClick.RemoveAllListeners();
+                
+                quitGameBtn.onClick.AddListener(() =>
+                {
+                    OnQuitButtonPressed();
+                } );
+            }
+            
+            gameOverScreen.SetActive(true);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            Time.timeScale = 0f;
+        }
+    }
+
+    private void OnLoadButtonPressed()
+    {
+        Time.timeScale = 1f;
+
+        if (SaveManager.Instance != null)
+        {
+            if (SaveManager.Instance.LoadGame())
+            {
+                Debug.Log("Load Successful");
+                
+                gameOverScreen.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+
+            else
+            {
+                Debug.Log("Load failed");
+                gameOverScreen.SetActive(false);
+                
+                RestoreHealth(maxHealth);
+            }
+        }
+    }
+    
+    private void OnQuitButtonPressed()
+    {
+        Debug.Log("Quitting game");
     }
 
     public void RestoreHealth(float healAmount)

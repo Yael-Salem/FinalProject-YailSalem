@@ -19,8 +19,6 @@ public class SaveData
     public List<string> watchedCutscenesID = new List<string>();
 }
 
-
-
 public class SaveManager : MonoBehaviour
 {
     // Using a singleton pattern
