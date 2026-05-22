@@ -1,7 +1,432 @@
 {
     "cutscenes":[
         {
-            "id": "start_scene",
+            "id": "intro_scene",
+            "lines": [
+                {
+                    "speaker":"Christian",
+                    "text": "Wha--",
+                    "lookTargetTag": ""
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "What is this place?",
+                    "lookTargetTag": ""
+                }
+            ]
+        },
+        {
+            "id": "lobby_scene_1",
+            "lines": [
+                {
+                    "speaker": "Sam",
+                    "text": "Hello? Is someone there?",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Sam? Sam is that you?!",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "What are you doing here?",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "I don't know, I just...woke up here...",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "I can barely remember anything it's all fuzzy",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Hang on I'll get you out just...let m-",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "-You can't, I've already tried, every door back here is busted",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "The only possible exit I've found was a door the leads to someplace called S5 but it's a dead end too,something might be blocking it from the other side",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Wait...if it's blocked from the other side maybe I can find it and unblock it",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "I'm in S4 right now, there has to be a way to S5 from here",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "I might've found something. hold on",
+                    "lookTargetTag": "cutscene_elevator"
+                }
+            ]
+        },
+        {
+            "id": "lobby_scene_2",
+            "lines": [
+                {
+                    "speaker": "Christian",
+                    "text": "Okay, there's an elevator that goes down to S5, but it needs a key to use it",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "Think you could find one?",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Ill try, but where on earth will I get one?",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "Maybe a manger's office or something? they're bound to have high enough clearance for something like that",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Let me see...",
+                    "lookTargetTag": "cutscene_map"
+                }
+            ]
+        },
+        {
+            "id": "lobby_scene_3",
+            "lines": [
+                {
+                    "speaker": "Christian",
+                    "text": "Got it! There's a manger's office close by",
+                    "lookTargetTag": "cutscene_map"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Hang in there Sam, I'm coming",
+                    "lookTargetTag": "cutscene_door"
+                }
+            ]
+        },
+        {
+            "id": "lobby_scene_4",
+            "lines": [
+                {
+                    "speaker": "Sam",
+                    "text": "Wait! Before you go",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "Be careful Christian, I keep hearing...things",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "What do you mean?",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "I don't think we're alone here, please be careful",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "You too, I-I'll be there as soon as I can, I promise",
+                    "lookTargetTag": "cutscene_door"
+                }
+            ]
+        },
+        {
+            "id": "hallway_scene_1",
+            "lines": [
+                {
+                    "speaker": "???",
+                    "text": "ALERT! ALERT!\nINTRUDER SPOTTED IN S4, INITIATING LOCKDOWN PROTOCOLS\nALL PERSONNEL ARE TO FIND AND CAPTURE THE INTRUDER",
+                    "lookTargetTag": "cutscene_security_camera"
+                },
+                {
+                    "speaker": "???",
+                    "text": "THERE IS NOTHING FOR YOU HERE.\nSURRENDER NOW AND MAKE YOUR DEATH QUICK.",
+                    "lookTargetTag": "cutscene_security_camera"
+                }
+            ]
+        },
+        {
+            "id": "locker_room_scene",
+            "lines": [
+                {
+                    "speaker": "Creature",
+                    "text": "Find...the intruder",
+                    "lookTargetTag": "cutscene_enemy"
+                },
+                {
+                    "speaker": "Creature",
+                    "text": "Bring...the intruder to...The Protector\nCan't...reach...her",
+                    "lookTargetTag": "cutscene_enemy"
+                }
+            ]
+        },
+        {
+            "id": "staff_room_scene_1",
+            "lines": [
+                {
+                    "speaker": "Sam",
+                    "text": "Christian? Are you there?",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "I'm here, what's going on?\nAre you okay?",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "I should be asking you! What's happening over there?!",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "I-I don't know! I think I might've tripped or alerted this place's security system, and there was this thing talking about taking me to The Protector\nWhatever that means",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "...",
+                    "lookTargetTag": "cutscene_floor"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "I don't know what's going on...",
+                    "lookTargetTag": "cutscene_floor"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "Breathe Christian, you have to pull yourself together otherwise neither of us is getting out of here alive",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "I know...I know",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "Did you find anything on how to lift the lockdown?",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Yeah, there are three override switches that need to be pulled",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "Okay, good, while you do that I'll look for anything that can help us get out of here, maybe something about this Protector guy",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "I'll keep an eye out as well",
+                    "lookTargetTag": "cutscene_vent"
+                }
+            ]
+        },
+        {
+            "id": "staff_room_optional",
+            "lines": [
+                {
+                    "speaker": "Sam",
+                    "text": "Any luck?",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Yeah, I found two switches so far",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "Good, we're gonna get out of here Christian, just one more switch to go\nYou can do this",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "...",
+                    "lookTargetTag": "cutscene_floor"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Why do you think we're here?",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "Do you think we're being punished for something?\nWere we chosen at random? Is this some experiment by those Pangea people?",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "The last thing I remember was that I was walking, I think I was going somewhere...then suddenly...I'm here\nfighting for my life against things things  I didn't even know could exist, being watched by someone, I just-",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "Maybe...we're here for a reason, we couldn't have been chosen at random, we must have some purpose in whatever is going here.",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "...",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "But no matter the reason, we will get ouf of here Christian, you and me, and I just know that you have what it takes to fulfil out purpose here.",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "I hope so.",
+                    "lookTargetTag": "cutscene_vent"
+                }
+            ]
+        },
+        {
+            "id": "observation_room_scene_start",
+            "lines": [
+                {
+                    "speaker": "Sam",
+                    "text": "Christian?! Christian! What's going on over there?!",
+                    "lookTargetTag": ""
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "I don't know! I pulled the last switch and the door just closed out of nowhere.",
+                    "lookTargetTag": ""
+                },
+                {
+                    "speaker": "Sam",
+                    "text": "Crap, he's got us cornered, hold on Christian I'll see what I can do from here",
+                    "lookTargetTag": ""
+                }
+            ]
+        },
+        {
+            "id": "observation_room_scene_end",
+            "lines": [
+                {
+                    "speaker": "Sam",
+                    "text": "I can't open it from here, but the door in front of you should take you directly to the manager's office, then leave through the door in his office.",
+                    "lookTargetTag": ""
+                }
+            ]
+        },
+        {
+            "id": "hallway_scene_2",
+            "lines": [
+                {
+                    "speaker": "???",
+                    "text": "I have to say, I'm quite impressed you made it this far, you've certaintly lasted longer than most of the others.",
+                    "lookTargetTag": "cutscene_security_camera"
+                },
+                {
+                    "speaker": "???",
+                    "text": "Consider this a final test for you, should you survive, I'll be waiting for you, good luck.",
+                    "lookTargetTag": "cutscene_security_camera"
+                }
+            ]
+        },
+        {
+            "id": "hallway_scene_3",
+            "lines": [
+                {
+                    "speaker": "???",
+                    "text": "Cecilia really has outdone herself hasn't she?\nWell go on then, don't keep me waiting.",
+                    "lookTargetTag": "cutscene_security_camera"
+                }
+            ]
+        },
+        {
+            "id": "lobby_scene_5",
+            "lines": [
+                {
+                    "speaker": "Christian",
+                    "text": "Sam? Sam, are you there?",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "",
+                    "text": "...",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "If you can hear me, I got the elevator key, go to the door you told me about. I'll find it and meet you there.",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "",
+                    "text": "...",
+                    "lookTargetTag": "cutscene_door"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "O-Okay, I'm gonna head down now, I-I'll see you soon.",
+                    "lookTargetTag": "cutscene_door"
+                }
+            ]
+        },
+        {
+            "id": "chase_start",
+            "lines": [
+                {
+                    "speaker": "The Protector",
+                    "text": "There you are!",
+                    "lookTargetTag": "cutscene_protector"
+                }
+            ]
+        },
+        {
+            "id": "chase_end",
+            "lines": [
+                {
+                    "speaker": "The Proctector",
+                    "text": "Such a shame Cecilia wasted your potential on more of her nonsense.",
+                    "lookTargetTag": "cutscene_protector"
+                },
+                {
+                    "speaker": "The Protector",
+                    "text": "Guess we'll have to knock some more sense into her after we're done with you",
+                    "lookTargetTag": "cutscene_protector"
+                }
+            ]
+        },
+        {
+            "id": "joke_scene",
+            "lines": [
+                {
+                    "speaker": "Christian",
+                    "text": "What the hell big fella",
+                    "lookTargetTag": "cutscene_enemy_joke"
+                }
+            ]
+        },
+        {
+            "id": "test_scene",
             "lines": [
                 {
                     "speaker": "Christian",
@@ -12,16 +437,6 @@
                     "speaker": "Christian",
                     "text": "What is this place?",
                     "lookTargetTag": "cutscene_door"
-                }
-            ]
-        },
-        {
-            "id": "joke_scene",
-            "lines": [
-                {
-                    "speaker": "Christian",
-                    "text": "What the hell big fella",
-                    "lookTargetTag": "cutscene_enemy"
                 }
             ]
         }
