@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] private string sceneName = "SampleScene"; // The name of the scene we want to load into
+    
     [Header("UI Panels")]
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject optionsPanel;
@@ -30,31 +32,39 @@ public class MainMenuManager : MonoBehaviour
         
         if(newGameBtn != null)
             newGameBtn.onClick.AddListener(OnNewGameClicked);
-        
-        if(continueBtn != null)
+
+        if (continueBtn != null)
+        {
             continueBtn.onClick.AddListener(OnContinueClicked);
+            
+            // Disabling the continue button if the player does not have an already existing save file
+            continueBtn.interactable = PlayerPrefs.GetInt("HasSaveData", 0) == 1;
+        }
         
         if(optionsBtn != null)
             optionsBtn.onClick.AddListener(OnOptionsClicked);
         
         if(quitBtn != null)
             quitBtn.onClick.AddListener(OnQuitClicked);
+        
+        
     }
     
     private void OnNewGameClicked()
     {
         Debug.Log("New game started");
         
-        // TODO: Implement new game start function
-        // StartNewGame();
+        PlayerPrefs.SetInt("HasSaveData", 1);
+        PlayerPrefs.Save();
+
+        SceneManager.LoadSceneAsync(sceneName);
     }
     
     private void OnContinueClicked()
     {
         Debug.Log("Game continued");
         
-        // TODO: Implement continue game function
-        // ContinueGame();
+        SceneManager.LoadSceneAsync(sceneName);
     }
     
     private void OnOptionsClicked()
