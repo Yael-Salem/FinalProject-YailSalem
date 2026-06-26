@@ -49,21 +49,29 @@ public class OptionsMenuManager : MonoBehaviour
     
     private void OnLowGraphicsClicked()
     {
+        QualitySettings.SetQualityLevel(0, true);
+        
         Debug.Log("Low graphics selected");
     }
     
     private void OnMediumGraphicsClicked()
     {
+        QualitySettings.SetQualityLevel(2, true);
+        
         Debug.Log("Medium graphics selected");
     }
     
     private void OnHighGraphicsClicked()
     {
+        QualitySettings.SetQualityLevel(4, true);
+        
         Debug.Log("High graphics selected");
     }
     
     private void OnVSyncToggled(bool isEnabled)
     {
+        QualitySettings.vSyncCount = isEnabled ? 1 : 0;
+        
         Debug.Log($"V-Sync is on: {isEnabled}");
     }
 
