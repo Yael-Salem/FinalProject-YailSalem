@@ -17,6 +17,9 @@ public class OptionsMenuManager : MonoBehaviour
     [Header("Toggles")]
     [SerializeField] private Toggle vSyncToggle;
     
+    // Event to know when the back button was clicked
+    public event Action OnBackAction;
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,8 +46,7 @@ public class OptionsMenuManager : MonoBehaviour
         if(optionsPanel != null)
             optionsPanel.SetActive(false);
         
-        if(mainMenuPanel != null)
-            mainMenuPanel.SetActive(true);
+        OnBackAction?.Invoke();
     }
     
     private void OnLowGraphicsClicked()
