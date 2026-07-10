@@ -18,6 +18,8 @@ public class InputManager : MonoBehaviour
     private PlayerCombat combat;
 
     private PlayerHealth health;
+
+    [SerializeField] private PauseMenuManager pauseMenu;
     
     // TODO DEBUG DebugActions Reference delete later
     private PlayerInput.DebugActions debug;
@@ -47,10 +49,23 @@ public class InputManager : MonoBehaviour
         onFoot.Sprint.performed += ctx => motor.Sprint();
         onFoot.Sprint.canceled += ctx => motor.SprintCancel();
 
+        // Left click for attacking
         onFoot.Attack.performed += ctx => combat.Attack();
         
+        // Right click for blocking
         onFoot.Block.performed += ctx => combat.Block();
         onFoot.Block.canceled += ctx => combat.CancelBlock();
+        
+        // Pressing Esc to pause and unpause the game
+        onFoot.Pause.performed += ctx =>
+        {
+            if (pauseMenu != null) pauseMenu.TogglePause();
+        };
+        
+        uiActions.Unpause.performed += ctx =>
+        {
+            if (pauseMenu != null) pauseMenu.TogglePause();
+        };
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
