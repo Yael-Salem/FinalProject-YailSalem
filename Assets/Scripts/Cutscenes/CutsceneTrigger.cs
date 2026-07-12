@@ -10,8 +10,10 @@ public class CutsceneTrigger : MonoBehaviour
     // ID for saving if we have already watched the cutscene or not
     [ContextMenuItem("Generate new save ID", "GenerateSaveID")]
     [SerializeField] private string cutsceneSaveId;
+    
+    [SerializeField] private string requiredCutsceneSaveId;
 
-    private InputManager activeInputManager;
+    public InputManager activeInputManager;
     private bool isCutsceneActive = false;
 
     private void Start()
@@ -19,7 +21,17 @@ public class CutsceneTrigger : MonoBehaviour
         // Checking if the cutscene ID is found in the list of watched cutscenes and disabling the collider if it is
         if (SaveManager.Instance != null &&
             SaveManager.Instance.playerSaveData.watchedCutscenesID.Contains(cutsceneSaveId))
+        {
             GetComponent<Collider>().enabled = false;
+            return;
+        }
+
+        if (SaveManager.Instance != null && !string.IsNullOrEmpty(requiredCutsceneSaveId))
+        {
+            if (SaveManager.Instance.playerSaveData.watchedCutscenesID.Contains(requiredCutsceneSaveId))
+                GetComponent<Collider>().enabled = false;
+        }
+            
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,16 +49,19 @@ public class CutsceneTrigger : MonoBehaviour
             GetComponent<Collider>().enabled = false;
         }
     }
-
-    private void StartCutscene(GameObject player)
+    
+    // Function to start a specific cutscene with an optional parameter of a cutscene id to use in the cutscene interact script
+    public void StartCutscene(GameObject player, string externalCutsceneId = null)
     {
         isCutsceneActive = true;
         activeInputManager.SetCutsceneMode(true);
         activeInputManager.uiActions.Submit.performed += OnSubmitPressed;
-        
-        DialogueManager.Instance.StartDialogue(cutsceneId, player, EndCutscene);
-    }
 
+        string idToPlay = !string.IsNullOrEmpty(externalCutsceneId) ? externalCutsceneId : cutsceneId;
+        
+        DialogueManager.Instance.StartDialogue(idToPlay, player, EndCutscene);
+    }
+    
     private void EndCutscene()
     {
         isCutsceneActive = false;
@@ -57,6 +72,16 @@ public class CutsceneTrigger : MonoBehaviour
         {
             SaveManager.Instance.playerSaveData.watchedCutscenesID.Add(cutsceneSaveId);
             Debug.Log($"Cutscene {cutsceneId} has been saved, save ID: {cutsceneSaveId}");
+            
+            // Finding all triggers in the scene and checking if they can be activated
+            CutsceneTrigger[] allTriggers = FindObjectsByType<CutsceneTrigger>(FindObjectsSortMode.None);
+
+            foreach (CutsceneTrigger trigger in allTriggers)
+            {
+                if(trigger != this && !string.IsNullOrEmpty(trigger.requiredCutsceneSaveId))
+                    if (trigger.requiredCutsceneSaveId == this.cutsceneId)
+                        trigger.GetComponent<Collider>().enabled = true;
+            }
         }
     }
 

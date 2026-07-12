@@ -404,7 +404,7 @@
             "id": "chase_end",
             "lines": [
                 {
-                    "speaker": "The Proctector",
+                    "speaker": "The Protector",
                     "text": "Such a shame Cecilia wasted your potential on more of her nonsense.",
                     "lookTargetTag": "cutscene_protector"
                 },
