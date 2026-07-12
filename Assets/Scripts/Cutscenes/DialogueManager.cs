@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [Header("UI Elements")]
     public GameObject dialogueBoxPanel;
     public GameObject speakerBoxPanel;
+    public Button skipButton;
 
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI speakerNameText;
@@ -19,7 +21,7 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.02f;
     
     // File where we will be reading the text from
-    private const string ScriptFileName = "script.json";
+    private const string SCRIPT_FILE_NAME = "script.json";
 
     private Dictionary<string, Dialogue> dialogueFromFile = new Dictionary<string, Dialogue>();
     private Queue<DialogueLine> sentences = new Queue<DialogueLine>();
@@ -28,6 +30,7 @@ public class DialogueManager : MonoBehaviour
     private string currentSentence;
     private PlayerLook playerLookController; // Controlling the player's head movement if we need them to look a certain way
     private System.Action onDialogueCompleteCallback;
+    private Coroutine typingCoroutine;
 
     private void Awake()
     {
@@ -38,12 +41,21 @@ public class DialogueManager : MonoBehaviour
             Destroy(gameObject);
 
         dialogueBoxPanel.SetActive(false);
+
+        if (skipButton != null)
+        {
+            skipButton.gameObject.SetActive(false);
+            skipButton.onClick.AddListener(SkipCutscene);
+            
+        }
+            
+        
         LoadDialogueData();
     }
 
     private void LoadDialogueData()
     {
-        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, ScriptFileName);
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, SCRIPT_FILE_NAME);
 
         if (File.Exists(filePath))
         {
@@ -84,6 +96,9 @@ public class DialogueManager : MonoBehaviour
         onDialogueCompleteCallback = onComplete;
         dialogueBoxPanel.SetActive(true);
         
+        if(skipButton != null)
+            skipButton.gameObject.SetActive(true);
+        
         sentences.Clear();
         
         foreach(DialogueLine line in dialogue.lines)
@@ -96,7 +111,9 @@ public class DialogueManager : MonoBehaviour
     {
         if (isTyping)
         {
-            StopAllCoroutines();
+            if(typingCoroutine != null)
+                StopCoroutine(typingCoroutine);
+            
             dialogueText.text = currentData.text;
             isTyping = false;
             return;
@@ -129,7 +146,16 @@ public class DialogueManager : MonoBehaviour
             }
         }
         
-        StartCoroutine(TypeSentence(currentSentence));
+        typingCoroutine = StartCoroutine(TypeSentence(currentSentence));
+    }
+
+    public void SkipCutscene()
+    {
+        if(typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+        
+        sentences.Clear();
+        EndDialogue();
     }
     
     private void EndDialogue()
@@ -138,6 +164,9 @@ public class DialogueManager : MonoBehaviour
             playerLookController.ClearCutsceneLookTarget();
         
         dialogueBoxPanel.SetActive(false);
+        if(skipButton != null)
+            skipButton.gameObject.SetActive(false);
+        
         onDialogueCompleteCallback?.Invoke();
     }
     
