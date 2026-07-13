@@ -1,0 +1,60 @@
+﻿{
+  "objectives": [
+    {
+      "id": "investigate",
+      "title": "Investigate"
+    },
+    {
+      "id": "investigate_elevator",
+      "title": "Investigate the Elevator"
+    },
+    {
+      "id": "find_sam",
+      "title": "Find Sam"
+    },
+    {
+      "id": "reach_staff_room",
+      "title": "Find a Way Into the Staff Room"
+    },
+    {
+      "id": "override_0",
+      "title": "Find and Throw Override Switches (0/3)"
+    },
+    {
+      "id": "override_1",
+      "title": "Find and Throw Override Switches (1/3)"
+    },
+    {
+      "id": "override_2",
+      "title": "Find and Throw Override Switches (2/3)"
+    },
+    {
+      "id": "override_3",
+      "title": "Find and Throw Override Switches (3/3)"
+    },
+    {
+      "id": "find_key",
+      "title": "Find the Elevator Key"
+    },
+    {
+      "id": "find_code",
+      "title": "Find the Code to The Security Room"
+    },
+    {
+      "id": "survive",
+      "title": "Survive"
+    },
+    {
+      "id": "head_down",
+      "title": "Head Down to S5"
+    },
+    {
+      "id": "run",
+      "title": "Run"
+    },
+    {
+      "id": "way_back",
+      "title": "Find a Way Back"
+    }
+  ]
+}

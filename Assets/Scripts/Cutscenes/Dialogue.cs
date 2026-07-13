@@ -5,7 +5,9 @@ public class Dialogue
 {
     public string id;
 
-    public List<DialogueLine> lines; 
+    public List<DialogueLine> lines;
+
+    public string triggersObjectiveId;
 }
 
 [System.Serializable]

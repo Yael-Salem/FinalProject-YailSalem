@@ -13,7 +13,8 @@
                     "text": "What is this place?",
                     "lookTargetTag": ""
                 }
-            ]
+            ],
+            "triggersObjectiveId": "investigate"
         },
         {
             "id": "lobby_scene_1",
@@ -73,7 +74,8 @@
                     "text": "I might've found something. hold on",
                     "lookTargetTag": "cutscene_elevator"
                 }
-            ]
+            ],
+            "triggersObjectiveId": "investigate_elevator"
         },
         {
             "id": "lobby_scene_2",
@@ -118,7 +120,8 @@
                     "text": "Hang in there Sam, I'm coming",
                     "lookTargetTag": "cutscene_door"
                 }
-            ]
+            ],
+            "triggersObjectiveId": "find_sam"
         },
         {
             "id": "lobby_scene_4",
@@ -176,9 +179,10 @@
                 {
                     "speaker": "Creature",
                     "text": "Bring...the intruder to...The Protector\nCan't...reach...her",
-                    "lookTargetTag": "cutscene_enemy"
+                    "lookTargetTag": "cutscene_staff_door"
                 }
-            ]
+            ],
+            "triggersObjectiveId": "reach_staff_room"
         },
         {
             "id": "staff_room_scene_1",
@@ -243,7 +247,8 @@
                     "text": "I'll keep an eye out as well",
                     "lookTargetTag": "cutscene_vent"
                 }
-            ]
+            ],
+            "triggersObjectiveId": "override_0"
         },
         {
             "id": "staff_room_optional",
@@ -323,24 +328,26 @@
                     "text": "Crap, he's got us cornered, hold on Christian I'll see what I can do from here",
                     "lookTargetTag": ""
                 }
-            ]
+            ],
+            "triggersObjectiveId": "survive"
         },
         {
             "id": "observation_room_scene_end",
             "lines": [
                 {
                     "speaker": "Sam",
-                    "text": "I can't open it from here, but the door in front of you should take you directly to the manager's office, then leave through the door in his office.",
+                    "text": "I can't open it from here, but the door in front of you should take you directly to the manager's office, then you can leave through the door in his office.",
                     "lookTargetTag": ""
                 }
-            ]
+            ],
+            "triggersObjectiveId": "find_key"
         },
         {
             "id": "hallway_scene_2",
             "lines": [
                 {
                     "speaker": "???",
-                    "text": "I have to say, I'm quite impressed you made it this far, you've certaintly lasted longer than most of the others.",
+                    "text": "I have to say, I'm quite impressed you made it this far, you've certainly lasted longer than most of the others.",
                     "lookTargetTag": "cutscene_security_camera"
                 },
                 {
@@ -348,7 +355,8 @@
                     "text": "Consider this a final test for you, should you survive, I'll be waiting for you, good luck.",
                     "lookTargetTag": "cutscene_security_camera"
                 }
-            ]
+            ],
+            "triggersObjectiveId": "survive"
         },
         {
             "id": "hallway_scene_3",
@@ -358,7 +366,8 @@
                     "text": "Cecilia really has outdone herself hasn't she?\nWell go on then, don't keep me waiting.",
                     "lookTargetTag": "cutscene_security_camera"
                 }
-            ]
+            ],
+            "triggersObjectiveId": "head_down"
         },
         {
             "id": "lobby_scene_5",
@@ -398,7 +407,8 @@
                     "text": "There you are!",
                     "lookTargetTag": "cutscene_protector"
                 }
-            ]
+            ],
+            "triggersObjectiveId": "run"
         },
         {
             "id": "chase_end",

@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     private PlayerLook playerLookController; // Controlling the player's head movement if we need them to look a certain way
     private System.Action onDialogueCompleteCallback;
     private Coroutine typingCoroutine;
+    private string currentActiveDialogueId;
 
     private void Awake()
     {
@@ -89,6 +90,8 @@ public class DialogueManager : MonoBehaviour
             onComplete?.Invoke();
             return;
         }
+
+        currentActiveDialogueId = dialogueId;
 
         if (player != null)
             player.TryGetComponent<PlayerLook>(out playerLookController);
@@ -166,6 +169,17 @@ public class DialogueManager : MonoBehaviour
         dialogueBoxPanel.SetActive(false);
         if(skipButton != null)
             skipButton.gameObject.SetActive(false);
+
+        if (!string.IsNullOrEmpty(currentActiveDialogueId) &&
+            dialogueFromFile.TryGetValue(currentActiveDialogueId, out Dialogue completedDialogue))
+        {
+            if (!string.IsNullOrEmpty(completedDialogue.triggersObjectiveId))
+            {
+                ObjectiveManager.Instance.TriggerObjective(completedDialogue.triggersObjectiveId);
+            }
+        }
+
+        currentActiveDialogueId = null;
         
         onDialogueCompleteCallback?.Invoke();
     }
