@@ -17,5 +17,7 @@ public class CutsceneInteract : Interactable
             
             trigger.StartCutscene(player, cutsceneId);
         }
+        
+        Destroy(gameObject);
     }
 }
