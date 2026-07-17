@@ -4,6 +4,8 @@ using System;
 public class ObjectiveInteract : Interactable
 {
     [SerializeField] private string objectiveId;
+
+    [SerializeField] private bool destroyOnInteract;
     
     protected override void Interact()
     {
@@ -13,6 +15,7 @@ public class ObjectiveInteract : Interactable
         else
             Debug.LogWarning($"No Objective manager found in this scene");
         
-        Destroy(gameObject);
+        if(destroyOnInteract)
+            Destroy(gameObject);
     }
 }

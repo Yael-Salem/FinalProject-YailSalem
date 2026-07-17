@@ -11,7 +11,9 @@ public class CutsceneTrigger : MonoBehaviour
     [ContextMenuItem("Generate new save ID", "GenerateSaveID")]
     [SerializeField] private string cutsceneSaveId;
     
-    [SerializeField] private string requiredCutsceneSaveId;
+    [SerializeField] private string requiredCutsceneSaveId; // Contains the GUID of another cutscene that is required to view the current one, is empty if no cutscene is required
+
+    [SerializeField] private string requiredObjectiveId; // Contains the ID of an objective that needs to be active in order to view the cutscene, is empty if no objective in required
 
     public InputManager activeInputManager;
     private bool isCutsceneActive = false;
@@ -25,13 +27,7 @@ public class CutsceneTrigger : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             return;
         }
-
-        if (SaveManager.Instance != null && !string.IsNullOrEmpty(requiredCutsceneSaveId))
-        {
-            if (SaveManager.Instance.playerSaveData.watchedCutscenesID.Contains(requiredCutsceneSaveId))
-                GetComponent<Collider>().enabled = false;
-        }
-            
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +35,17 @@ public class CutsceneTrigger : MonoBehaviour
         // Not playing the cutscene if the player has already seen it
         if (SaveManager.Instance != null &&
             SaveManager.Instance.playerSaveData.watchedCutscenesID.Contains(cutsceneSaveId))
+            return;
+        
+        // Checking if the scene required a previous cutscene to be viewed, and not playing the current scene if the required previous scene hasn't been viewed
+        if (!string.IsNullOrEmpty(requiredCutsceneSaveId) &&
+            !SaveManager.Instance.playerSaveData.watchedCutscenesID.Contains(requiredCutsceneSaveId))
+            return;
+        
+        // Checking if a certain objective needs to be active before playing, and not playing the scene unless it is active
+        if (!string.IsNullOrEmpty(requiredObjectiveId)
+            && SaveManager.Instance != null
+            && !SaveManager.Instance.playerSaveData.completedObjectivesID.Contains(requiredObjectiveId))
             return;
         
         
@@ -72,16 +79,6 @@ public class CutsceneTrigger : MonoBehaviour
         {
             SaveManager.Instance.playerSaveData.watchedCutscenesID.Add(cutsceneSaveId);
             Debug.Log($"Cutscene {cutsceneId} has been saved, save ID: {cutsceneSaveId}");
-            
-            // Finding all triggers in the scene and checking if they can be activated
-            CutsceneTrigger[] allTriggers = FindObjectsByType<CutsceneTrigger>(FindObjectsSortMode.None);
-
-            foreach (CutsceneTrigger trigger in allTriggers)
-            {
-                if(trigger != this && !string.IsNullOrEmpty(trigger.requiredCutsceneSaveId))
-                    if (trigger.requiredCutsceneSaveId == this.cutsceneId)
-                        trigger.GetComponent<Collider>().enabled = true;
-            }
         }
     }
 

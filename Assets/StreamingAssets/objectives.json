@@ -13,6 +13,10 @@
       "title": "Find Sam"
     },
     {
+      "id": "find_key",
+      "title": "Find the Elevator Key"
+    },
+    {
       "id": "reach_staff_room",
       "title": "Find a Way Into the Staff Room"
     },
@@ -33,8 +37,8 @@
       "title": "Find and Throw Override Switches (3/3)"
     },
     {
-      "id": "find_key",
-      "title": "Find the Elevator Key"
+      "id": "get_key",
+      "title": "Get the Elevator Key"
     },
     {
       "id": "find_code",

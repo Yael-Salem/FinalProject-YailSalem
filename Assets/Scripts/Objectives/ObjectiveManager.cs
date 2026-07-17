@@ -58,6 +58,9 @@ public class ObjectiveManager : MonoBehaviour
         if (string.IsNullOrEmpty(id))
             return;
 
+        if (SaveManager.Instance != null && !SaveManager.Instance.playerSaveData.completedObjectivesID.Contains(id))
+            SaveManager.Instance.playerSaveData.completedObjectivesID.Add(id);
+
         if (objectiveDatabase.TryGetValue(id, out string objectiveTitle))
         {
             Debug.Log($"New objective activated: {objectiveTitle}");

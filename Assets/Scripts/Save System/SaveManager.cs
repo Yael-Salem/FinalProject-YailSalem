@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
-    // Player position
+    // Player position (x, y and z coordinates)
     public float[] playerPosition = new float[3];
     
     // Player's health at the time of saving
@@ -17,6 +17,9 @@ public class SaveData
     
     // List of cutscene ID's that the player has already watched
     public List<string> watchedCutscenesID = new List<string>();
+    
+    // List of objectives the player has completed
+    public List<string> completedObjectivesID = new List<string>();
 }
 
 public class SaveManager : MonoBehaviour

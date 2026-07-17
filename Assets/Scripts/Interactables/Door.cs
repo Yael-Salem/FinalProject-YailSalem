@@ -13,9 +13,17 @@ public class Door : Interactable
     private Coroutine movementCoroutine;
 
     private Quaternion initialRotation;
+
+    [SerializeField] private bool isLocked;
     
     protected override void Interact()
     {
+        if (isLocked)
+        {
+            this.promptMessage = "Locked";
+            return; 
+        }
+        
         isOpen = !isOpen;
         
         if(movementCoroutine != null)
