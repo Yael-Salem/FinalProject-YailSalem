@@ -32,7 +32,7 @@ public class ObjectiveUI : MonoBehaviour
     {
         if (objectiveHeaderText == null || objectiveTitleText == null)
         {
-            Debug.LogError($"Missing Objective UI refrence");
+            Debug.LogError($"Missing Objective UI reference");
             return;
         }
 
