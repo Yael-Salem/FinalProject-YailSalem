@@ -61,6 +61,9 @@ public class CutsceneTrigger : MonoBehaviour
     public void StartCutscene(GameObject player, string externalCutsceneId = null)
     {
         isCutsceneActive = true;
+
+        PauseMenuManager.canPause = false;
+        
         activeInputManager.SetCutsceneMode(true);
         activeInputManager.uiActions.Submit.performed += OnSubmitPressed;
 
@@ -72,6 +75,9 @@ public class CutsceneTrigger : MonoBehaviour
     private void EndCutscene()
     {
         isCutsceneActive = false;
+
+        PauseMenuManager.canPause = true;
+        
         activeInputManager.uiActions.Submit.performed -= OnSubmitPressed;
         activeInputManager.SetCutsceneMode(false);
 

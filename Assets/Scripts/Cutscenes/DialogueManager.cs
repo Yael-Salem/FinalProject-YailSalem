@@ -97,6 +97,13 @@ public class DialogueManager : MonoBehaviour
             player.TryGetComponent<PlayerLook>(out playerLookController);
 
         onDialogueCompleteCallback = onComplete;
+
+        if (dialogueText != null)
+            dialogueText.text = string.Empty;
+
+        if (speakerNameText != null)
+            speakerNameText.text = string.Empty;
+        
         dialogueBoxPanel.SetActive(true);
         
         if(skipButton != null)
@@ -118,7 +125,9 @@ public class DialogueManager : MonoBehaviour
                 StopCoroutine(typingCoroutine);
             
             dialogueText.text = currentData.text;
+
             isTyping = false;
+            
             return;
         }
 

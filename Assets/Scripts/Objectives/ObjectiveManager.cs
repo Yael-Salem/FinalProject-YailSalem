@@ -14,6 +14,8 @@ public class ObjectiveManager : MonoBehaviour
 
     private const string OBJECTIVES_FILE_NAME = "objectives.json";
 
+    public string currentObjectiveTitle { get; private set; } = "No active objective";
+
     private void Awake()
     {
         if (Instance == null)
@@ -64,6 +66,8 @@ public class ObjectiveManager : MonoBehaviour
         if (objectiveDatabase.TryGetValue(id, out string objectiveTitle))
         {
             Debug.Log($"New objective activated: {objectiveTitle}");
+
+            currentObjectiveTitle = objectiveTitle;
 
             if (objectiveUI != null)
                 objectiveUI.ShowNewObjective(objectiveTitle);

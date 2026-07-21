@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,6 +25,12 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private OptionsMenuManager optionsMenuManager;
 
     private bool isPaused = false;
+    
+    // Public boolean to control the player's ability to pause, for example: disabling the ability to pause during a cutscene
+    // Value is set by other scripts
+    public static bool canPause = true;
+
+    [SerializeField] private TextMeshProUGUI currentObjectiveNameText;
 
     private void Start()
     {
@@ -40,6 +47,9 @@ public class PauseMenuManager : MonoBehaviour
     
     public void TogglePause()
     {
+        if (!canPause && !isPaused)
+            return;
+        
         if(optionsPanel.activeSelf)
             CloseOptions();
         
@@ -56,6 +66,9 @@ public class PauseMenuManager : MonoBehaviour
         pausePanel.SetActive(true);
         optionsPanel.SetActive(false);
         Time.timeScale = 0f;
+
+        if (currentObjectiveNameText != null && ObjectiveManager.Instance != null)
+            currentObjectiveNameText.text = ObjectiveManager.Instance.currentObjectiveTitle;
 
         if (inputManager != null)
         {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - cutscene_door
+  - cutscene_elevator
   layers:
   - Default
   - TransparentFX
