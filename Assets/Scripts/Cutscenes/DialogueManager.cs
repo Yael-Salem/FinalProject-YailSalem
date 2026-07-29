@@ -29,8 +29,10 @@ public class DialogueManager : MonoBehaviour
     private DialogueLine currentData;
     private string currentSentence;
     private PlayerLook playerLookController; // Controlling the player's head movement if we need them to look a certain way
+    private PlayerMotor playerMotorController; // Reference to the motor system in case we need to move the player to a specific target during the cutscene
     private System.Action onDialogueCompleteCallback;
     private Coroutine typingCoroutine;
+    private Coroutine moveCoroutine; // Keeping track of active cutscene movement loop
     private string currentActiveDialogueId;
 
     private void Awake()
@@ -94,7 +96,11 @@ public class DialogueManager : MonoBehaviour
         currentActiveDialogueId = dialogueId;
 
         if (player != null)
+        {
             player.TryGetComponent<PlayerLook>(out playerLookController);
+            player.TryGetComponent<PlayerMotor>(out playerMotorController);
+        }
+            
 
         onDialogueCompleteCallback = onComplete;
 
@@ -130,7 +136,8 @@ public class DialogueManager : MonoBehaviour
             
             return;
         }
-
+        
+        
         if (sentences.Count == 0)
         {
             EndDialogue();
@@ -157,8 +164,43 @@ public class DialogueManager : MonoBehaviour
                 playerLookController.SetCutsceneTrigger(target);
             }
         }
+
+        if (playerMotorController != null && !string.IsNullOrEmpty(currentData.moveTargetTag))
+        {
+            if (moveCoroutine != null)
+            {
+                StopCoroutine(moveCoroutine);
+                moveCoroutine = null;
+            }
+            
+            GameObject foundTarget = GameObject.FindWithTag(currentData.moveTargetTag);
+
+            if (foundTarget != null)
+                moveCoroutine = StartCoroutine(CutsceneMoveLoop(foundTarget.transform));
+        }
+        
         
         typingCoroutine = StartCoroutine(TypeSentence(currentSentence));
+    }
+
+    private IEnumerator CutsceneMoveLoop(Transform destination)
+    {
+        if(destination == null || playerMotorController == null)
+            yield break;
+
+        // Getting player's current position
+        Transform playerTransform = playerMotorController.transform;
+
+        // Moving the player until we reach just before the destination
+        while (Vector3.SqrMagnitude(
+                   new Vector3(destination.position.x, playerTransform.position.y, destination.position.z) -
+                   playerTransform.position) > 5.0f)
+        {
+            playerMotorController.MoveTowardsTarget(destination);
+            yield return null;
+        }
+
+        moveCoroutine = null;
     }
 
     public void SkipCutscene()
@@ -174,6 +216,13 @@ public class DialogueManager : MonoBehaviour
     {
         if(playerLookController != null)
             playerLookController.ClearCutsceneLookTarget();
+        
+        // Making the player stop tracking targets when the cutscene ends
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+            moveCoroutine = null;
+        }
         
         dialogueBoxPanel.SetActive(false);
         if(skipButton != null)

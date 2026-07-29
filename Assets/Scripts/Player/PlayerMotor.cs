@@ -22,8 +22,6 @@ public class PlayerMotor : MonoBehaviour
     private bool crouching = false;
     private bool lerpCrouch = false;
     private float crouchTimer = 1f;
-
- 
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -107,6 +105,30 @@ public class PlayerMotor : MonoBehaviour
 
         speed = 5f;
     }
+    
+    // Function takes a target for the player to move towards in cutscenes and moves the player to it
+    public void MoveTowardsTarget(Transform target)
+    {
+        if (target == null)
+            return;
 
+        Vector3 targetPos = new Vector3(target.position.x, transform.position.y, target.position.z);
+        Vector3 direction = targetPos - transform.position;
+        
+        // Moving only if the player hasn't arrived at the target yet
+        if (direction.sqrMagnitude > 0.01f)
+        {
+            Vector3 moveVelocity = direction.normalized * speed * Time.deltaTime;
+            controller.Move(moveVelocity);
+        }
+
+        // Applying gravity to player's movement
+        playerVelocity.y += gravity * Time.deltaTime;
+
+        if (isGrounded && playerVelocity.y < 0)
+            playerVelocity.y = -2f;
+
+        controller.Move(playerVelocity * Time.deltaTime);
+    }
 
 }

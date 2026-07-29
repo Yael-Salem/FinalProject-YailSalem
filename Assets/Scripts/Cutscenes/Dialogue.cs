@@ -24,4 +24,6 @@ public class DialogueLine
     public string text;
 
     public string lookTargetTag; // In case we need the player to look a certain direction
+
+    public string moveTargetTag; // In case we need to move the player to a specific location
 }
