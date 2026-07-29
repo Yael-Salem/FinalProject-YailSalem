@@ -32,7 +32,8 @@
                 {
                     "speaker": "Christian",
                     "text": "What are you doing here?",
-                    "lookTargetTag": "cutscene_door"
+                    "lookTargetTag": "cutscene_door",
+                    "moveTargetTag": "cutscene_door"
                 },
                 {
                     "speaker": "Sam",
