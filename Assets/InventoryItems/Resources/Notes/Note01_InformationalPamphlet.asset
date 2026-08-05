@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
+  m_Name: Note01_InformationalPamphlet
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Pangea informational pamphlet
+  itemDescription: A hard sell for a tough crowd
+  fullNoteContent: " \u2014-ou are now standing in our top of the line Sector 4 (S4
+    for short) here, like many other sectors and departments in Pangea Laboratories,
+    you will see some of the hardest working and most dedicated staff all working
+    together around the clock to bring us ever closer to our goal.\r\nThis sector\u2019s
+    main job is monitoring and tracking our subjects and their progression, making
+    sure they are doing well after their assimilation and always prepared to treat
+    any and all complications that may occur.\r\nFrom here you will find elevators
+    and passageways to the rest of the sectors in Pangea providing easy and instant
+    access should any of our teams need each other\u2019s expertise and help, with
+    the main point of access being the elevator in the lobby which will take you
+    down directly to the next sector, S5.\r\n\r\nDuring your visit here we are certain
+    our staff will help you see why the research we\u2019re doing here is essential,
+    not only for us, but for all of mankind."
+  type: 1
+  icon: {fileID: 0}
