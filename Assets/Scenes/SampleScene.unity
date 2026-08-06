@@ -7776,6 +7776,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6994920958594003445, guid: 51e00863ac01cf04681ee43d7855f000, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994920958594003445, guid: 51e00863ac01cf04681ee43d7855f000, type: 3}
+      propertyPath: requiredPhase
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8168850479493255084, guid: 51e00863ac01cf04681ee43d7855f000, type: 3}
       propertyPath: m_Name
       value: DoorTest (2)
@@ -13760,6 +13768,55 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e00863ac01cf04681ee43d7855f000, type: 3}
+--- !u!1 &1263406761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1263406762}
+  - component: {fileID: 1263406763}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1263406762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263406761}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1556417298}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1263406763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263406761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab5aae361d88ea4faf2fd1a235fee7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  phaseTransitionRules:
+  - targetPhase: 0
+    requiredObjectiveIds:
+    - find_sam
+    - find_key
 --- !u!1 &1283722991
 GameObject:
   m_ObjectHideFlags: 0
@@ -17106,7 +17163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1556417298}
   m_Layer: 0
-  m_Name: GameManagers
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17129,6 +17186,7 @@ Transform:
   - {fileID: 2134384952}
   - {fileID: 1535398164}
   - {fileID: 52350792}
+  - {fileID: 1263406762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1568983437 stripped
@@ -25103,31 +25161,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 237722426811198375, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
       insertIndex: 0
       addedObject: {fileID: 247675953}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2878372860373735254, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 4281141947932840484, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 4623717979627995547, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 8782386841471722792, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 935710119207899379, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 7749152457759624181, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 1852205293485507562, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6074795715599463238, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64331c840d0b9c34f99927d651d8220a, type: 3}
 --- !u!1001 &2023866659618938822
 PrefabInstance:
