@@ -16,6 +16,45 @@ public class Door : Interactable
 
     [SerializeField] private bool isLocked;
     
+    
+    // An enum to decide if a door is locked for the entire duration of the game or opens at some point
+    private enum LockMode
+    {
+        PhaseGated,
+        Permanent
+    }
+
+    [SerializeField] private LockMode lockMode = LockMode.PhaseGated; // Each door opens at some point by default
+    [SerializeField] private GamePhase requiredPhase;
+
+    private void OnEnable()
+    {
+        GameManager.onPhaseChanged += HandlePhaseChanged;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onPhaseChanged -= HandlePhaseChanged;
+    }
+
+    private void Start()
+    {
+        RefreshLockState();
+    }
+
+    private void RefreshLockState()
+    {
+        if (lockMode == LockMode.Permanent || GameManager.Instance == null)
+            return;
+
+        isLocked = !GameManager.Instance.IsPhaseAtLeast(requiredPhase);
+    }
+
+    private void HandlePhaseChanged(GamePhase previousPhase, GamePhase newPhase)
+    {
+        RefreshLockState();
+    }
+
     protected override void Interact()
     {
         if (isLocked)

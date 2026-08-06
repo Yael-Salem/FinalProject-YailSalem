@@ -15,6 +15,8 @@ public class ObjectiveManager : MonoBehaviour
     private const string OBJECTIVES_FILE_NAME = "objectives.json";
 
     public string currentObjectiveTitle { get; private set; } = "No active objective";
+    
+    public static event Action<string> onObjectiveCompleted;
 
     private void Awake()
     {
@@ -78,5 +80,12 @@ public class ObjectiveManager : MonoBehaviour
         
         else
             Debug.LogWarning($"Object ID: {id} requested but not found");
+        
+        onObjectiveCompleted?.Invoke(id);
+    }
+
+    public bool IsObjectiveCompleted(string id)
+    {
+        return SaveManager.Instance != null && SaveManager.Instance.playerSaveData.completedObjectivesID.Contains(id);
     }
 }
