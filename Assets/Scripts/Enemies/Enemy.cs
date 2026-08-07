@@ -116,7 +116,6 @@ public class Enemy : MonoBehaviour
             
             // Flattening the height so the enemy sees the player regardless of height
             Vector3 flatDirection = targetDirection;
-
             flatDirection.y = 0;
 
             float angleToPlayer = Vector3.Angle(flatDirection, transform.forward);
@@ -127,7 +126,8 @@ public class Enemy : MonoBehaviour
 
                 RaycastHit hitInfo = new RaycastHit();
 
-                if (Physics.Raycast(ray, out hitInfo, sightDistance, LayerMask.GetMask("Player")))
+                // Checking if there is a wall in front of the enemy before checking if they hit the player
+                if (Physics.Raycast(ray, out hitInfo, sightDistance))
                 {
                     if (hitInfo.collider.CompareTag("Player"))
                     {

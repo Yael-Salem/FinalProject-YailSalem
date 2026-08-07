@@ -81,6 +81,8 @@ public class ObjectiveManager : MonoBehaviour
         else
             Debug.LogWarning($"Object ID: {id} requested but not found");
         
+        Debug.Log($"TriggerObjective firing with id: '{id}'");
+        
         onObjectiveCompleted?.Invoke(id);
     }
 

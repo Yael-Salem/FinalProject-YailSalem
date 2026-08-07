@@ -30,6 +30,7 @@ public class Door : Interactable
     private void OnEnable()
     {
         GameManager.onPhaseChanged += HandlePhaseChanged;
+        Debug.Log($"{gameObject.name} subscribed to phase changes");
     }
 
     private void OnDisable()
@@ -52,6 +53,7 @@ public class Door : Interactable
 
     private void HandlePhaseChanged(GamePhase previousPhase, GamePhase newPhase)
     {
+        Debug.Log($"{gameObject} received phase change: {newPhase}, isLocked will become {!GameManager.Instance.IsPhaseAtLeast(requiredPhase)}");
         RefreshLockState();
     }
 
