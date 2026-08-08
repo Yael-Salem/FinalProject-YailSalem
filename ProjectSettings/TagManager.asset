@@ -8,6 +8,7 @@ TagManager:
   - cutscene_door
   - cutscene_elevator
   - cutscene_map
+  - cutscene_security_camera
   layers:
   - Default
   - TransparentFX
