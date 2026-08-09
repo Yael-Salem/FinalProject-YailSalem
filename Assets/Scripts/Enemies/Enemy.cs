@@ -37,7 +37,13 @@ public class Enemy : MonoBehaviour
     private readonly float attackCooldown = 1.5f;
     private bool attacking = false;
     private float nextAttackTime = 0f;
-
+    
+    // Attack damage variables
+    // Defaulting to a minimum of 2 HP and a max of 7 HP unless changed in the Editor
+    [SerializeField] private int minAttackDamage = 2;
+    [SerializeField] private int maxAttackDamage = 7;
+    
+    
     // Dodging variables
     private bool dodging = false;
     private bool canDodge = true;
@@ -172,7 +178,7 @@ public class Enemy : MonoBehaviour
 
                 if (playerHealth != null)
                 {
-                    playerHealth.TakeDamage(Random.Range(2, 7));
+                    playerHealth.TakeDamage(Random.Range(minAttackDamage, maxAttackDamage));
 
                     Debug.Log(playerHealth.Health);
                 }

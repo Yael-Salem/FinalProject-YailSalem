@@ -11,10 +11,7 @@ public class GateTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hasTriggered)
-            return;
-
-        if (!other.CompareTag("Player"))
+        if (hasTriggered || !other.CompareTag("Player"))
             return;
 
         hasTriggered = true;
