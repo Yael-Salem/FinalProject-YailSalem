@@ -4,10 +4,15 @@ using UnityEngine;
 public class Gate : MonoBehaviour
 {
     [SerializeField] private float openY = 4.36f;
-    [SerializeField] private float closedY = -5.87f;
+    [SerializeField] private float closedY = -2.057869f;
     [SerializeField] private float moveSpeed = 10f;
     
     [SerializeField] private float delaySeconds = 7f; // How many seconds to wait before closing the gate
+    
+    // Audio source and sound effect files
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip closeSound;
+    [SerializeField] private AudioClip openSound;
 
     private Coroutine moveCoroutine;
     
@@ -17,6 +22,9 @@ public class Gate : MonoBehaviour
             StopCoroutine(moveCoroutine);
 
         moveCoroutine = StartCoroutine(MoveToY(closedY));
+        
+        if(audioSource != null && closeSound != null)
+            audioSource.PlayOneShot(closeSound);
     }
     
     public void Open()
@@ -25,6 +33,9 @@ public class Gate : MonoBehaviour
             StopCoroutine(moveCoroutine);
 
         moveCoroutine = StartCoroutine(MoveToY(openY));
+        
+        if(audioSource != null && openSound != null)
+            audioSource.PlayOneShot(openSound);
     }
     
     // Getter for delaySeconds

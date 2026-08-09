@@ -159,7 +159,12 @@
             "lines": [
                 {
                     "speaker": "???",
-                    "text": "ALERT! ALERT!\nINTRUDER SPOTTED IN S4, INITIATING LOCKDOWN PROTOCOLS\nALL PERSONNEL ARE TO FIND AND CAPTURE THE INTRUDER",
+                    "text": "ALERT! ALERT!\nINTRUDER SPOTTED IN S4, INITIATING LOCKDOWN PROTOCOLS",
+                    "lookTargetTag": "cutscene_security_camera"
+                },
+                {
+                    "speaker": "???",
+                    "text": "ALL PERSONNEL ARE TO FIND AND CAPTURE THE INTRUDER",
                     "lookTargetTag": "cutscene_security_camera"
                 },
                 {
