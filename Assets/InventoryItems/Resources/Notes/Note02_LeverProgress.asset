@@ -12,10 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
   m_Name: Note02_LeverProgress
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: Note02_LeverProgress
-  itemDescription: find levers or something
-  fullNoteContent: i realized i forgot to write a proper note for this one so ill
-    just put random stuff here hi hello i have no clue how i forgot to write one
-    of the most important notes in the entire game
+  itemName: Security Notice
+  itemDescription: The way forward
+  fullNoteContent: 'Notice to all employees,As of today installation of our new emergency
+    system has been completed, this memo serves strictly as an introduction as to
+    how the new system works, emergency protocols and how to act in the event of
+    an emergency will be given shortly after receiving this memo.
+
+
+    This new
+    system is designed to close and section off rooms in S4 in the event that a specimen
+    escapes and is loose in the facility, this is done using metal gates that will
+    close and block off certain rooms to corner and limit the specimen''s options
+    in escaping.All staff are to act in accordance to their respective department''s
+    emergency protocols and find the nearest emergency exit or in the event of none
+    being nearby find the room designated as the safe room and remaining there until
+    further notice.In addition override levers have been installed to these safe
+    rooms in order to lift the lockdown after the event has ended.
+
+
+    Attached
+    to this memo is the location of the nearest safe rooms and override levers to
+    your department.
+
+
+    There are 3 override levers located in your area of S4:Staff
+    Room,Security Office,Laboratory Observation Room'
   type: 1
   icon: {fileID: 0}
