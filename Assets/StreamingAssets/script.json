@@ -210,7 +210,12 @@
                 },
                 {
                     "speaker": "Christian",
-                    "text": "I-I don't know! I think I might've tripped or alerted this place's security system, and there was this thing talking about taking me to The Protector\nWhatever that means",
+                    "text": "I-I don't know! I think I might've tripped or alerted this place's security system,",
+                    "lookTargetTag": "cutscene_vent"
+                },
+                {
+                    "speaker": "Christian",
+                    "text": "and there was this thing talking about taking me to The Protector\nWhatever that means",
                     "lookTargetTag": "cutscene_vent"
                 },
                 {
@@ -240,7 +245,7 @@
                 },
                 {
                     "speaker": "Christian",
-                    "text": "Yeah, there are three override switches that need to be pulled",
+                    "text": "Yeah, there are three override levers that need to be pulled",
                     "lookTargetTag": "cutscene_vent"
                 },
                 {
@@ -253,8 +258,7 @@
                     "text": "I'll keep an eye out as well",
                     "lookTargetTag": "cutscene_vent"
                 }
-            ],
-            "triggersObjectiveId": "override_0"
+            ]
         },
         {
             "id": "staff_room_optional",
