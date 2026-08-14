@@ -14,7 +14,7 @@ public class Door : Interactable
 
     private Quaternion initialRotation;
 
-    [SerializeField] private bool isLocked;
+    [SerializeField] protected bool isLocked;
     
     
     // An enum to decide if a door is locked for the entire duration of the game or opens at some point
