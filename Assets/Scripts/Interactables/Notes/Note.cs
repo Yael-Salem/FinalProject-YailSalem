@@ -14,7 +14,7 @@ public class Note : Interactable
     
     
     [SerializeField]
-    private ItemData itemData;
+    protected ItemData itemData;
 
     [Header("UI References")]
     [SerializeField] private GameObject notePanel;
@@ -22,6 +22,10 @@ public class Note : Interactable
     [SerializeField] private GameObject nextButton;
     [SerializeField] private GameObject prevButton;
     [SerializeField] private GameObject closeButton;
+    
+    // A flag that indicated whether the note should be added to the player's inventory (is true by default)
+    [SerializeField] private bool addToInventory = true;
+    
 
     private int currentPage = 0;
 
@@ -89,7 +93,8 @@ public class Note : Interactable
 
             OnNoteCollected();
             
-            InventoryManager.Instance.AddItem(itemData);
+            if(addToInventory)
+                InventoryManager.Instance.AddItem(itemData);
             
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;

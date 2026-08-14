@@ -32,6 +32,8 @@ public class PauseMenuManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI currentObjectiveNameText;
 
+    [SerializeField] private CodeProgressTrackerUI codeProgressTracker;
+
     private void Start()
     {
         if(continueBtn != null) continueBtn.onClick.AddListener(ContinueGame);
@@ -69,6 +71,9 @@ public class PauseMenuManager : MonoBehaviour
 
         if (currentObjectiveNameText != null && ObjectiveManager.Instance != null)
             currentObjectiveNameText.text = ObjectiveManager.Instance.currentObjectiveTitle;
+        
+        if(codeProgressTracker != null)
+            codeProgressTracker.RefreshDisplay();
 
         if (inputManager != null)
         {

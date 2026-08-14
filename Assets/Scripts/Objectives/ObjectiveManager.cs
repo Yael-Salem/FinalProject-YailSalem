@@ -14,7 +14,9 @@ public class ObjectiveManager : MonoBehaviour
 
     private const string OBJECTIVES_FILE_NAME = "objectives.json";
 
-    public string currentObjectiveTitle { get; private set; } = "No active objective";
+    public string currentObjectiveTitle { get; set; } = "No active objective";
+    
+    public string currentObjectiveId { get; set; }
     
     public static event Action<string> onObjectiveCompleted;
 
@@ -71,6 +73,8 @@ public class ObjectiveManager : MonoBehaviour
 
             currentObjectiveTitle = objectiveTitle;
 
+            currentObjectiveId = id;
+
             if (objectiveUI != null)
                 objectiveUI.ShowNewObjective(objectiveTitle);
             
@@ -89,5 +93,14 @@ public class ObjectiveManager : MonoBehaviour
     public bool IsObjectiveCompleted(string id)
     {
         return SaveManager.Instance != null && SaveManager.Instance.playerSaveData.completedObjectivesID.Contains(id);
+    }
+    
+    // TODO DEBUG Delete later
+    [SerializeField] private string debugObjectiveId;
+
+    [ContextMenu("Trigger Debug Objective")]
+    private void TriggerDebugObjective()
+    {
+        TriggerObjective(debugObjectiveId);
     }
 }
