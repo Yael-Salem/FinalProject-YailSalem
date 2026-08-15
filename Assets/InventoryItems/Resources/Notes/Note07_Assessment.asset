@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
+  m_Name: Note07_Assessment
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Howard Clark - Subject 003 assessment
+  itemDescription: Custodian of S4
+  fullNoteContent: "Howard Clark is an unusual man, he spends essentially all of
+    his time here just sitting in the security office never really leaving to talk
+    to anybody.\n\nInstead he just sits in his office and watches everything, which,
+    I suppose, you could argue is a good thing for us since rarely anything slips
+    past him and his reports are always the most thorough since he sees basically
+    everything that happens here.\n\nOn the rare occasion he does leave or has to
+    work with other security personnel, he is not concerned with what others do or
+    say and he just does his own thing, more often than not he sort of defaults into
+    the \u201Cleader\u201D of the room.\n\nAside from that nothing else about him
+    stands out, his physical assessments show he is perfectly healthy with no history
+    of medical issues, and despite his reluctance to speak during his psychological
+    assessments, I think his behaviour, as outlined above, tells us all we need to
+    know.\n\n- Assessment by Dr. Olivier Matthews"
+  type: 0
+  icon: {fileID: 0}

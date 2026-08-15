@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
+  m_Name: Note04_JournalEntry
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Journal entry - 03.05.10
+  itemDescription: Notes left behind by a wanderer
+  fullNoteContent: "I haven\u2019t been up here for a while, well I never did come
+    up here much in the first place but now it\u2019s been even less ever since it
+    all went down.\n\nThis place is in surprisingly good condition, especially compared
+    to the other places I\u2019ve seen, but that doesn\u2019t exactly mean it\u2019s
+    safe, I still need to keep my eyes and ears open, I can\u2019t risk getting caught,
+    not now.\n\nEveryone here is loyal to The Protector, he has them in a chokehold,
+    they follow his every word like it\u2019s law and I\u2019m sure he won\u2019t
+    take too kindly to me of all people wandering around up here.\n\nThough I\u2019m
+    pretty sure it isn\u2019t just him here, I heard someone else moving around in
+    the darkness, now whether it\u2019s one of The Protector\u2019s loyalists or
+    someone else, I don\u2019t know, and I\u2019d rather not stick around to find
+    out, I just hope my cover isn\u2019t blown."
+  type: 1
+  icon: {fileID: 0}

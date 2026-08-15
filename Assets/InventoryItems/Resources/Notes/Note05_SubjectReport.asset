@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
+  m_Name: Note05_SubjectReport
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: SUBJECT 003 REPORT - 27.8.07
+  itemDescription: A protector stepping into his role
+  fullNoteContent: "SUBJECT 003: Howard Clark - Weekly Report By: DR. J. Rogers\n\nObservations:\n\nSubject
+    has made significant progress in the past few months, despite the radical physical
+    changes to his body caused by his assimilation, tests indicate that he is healthy
+    physically and has essentially returned to normal function, well as close to
+    normal as he can in his new state.However the same cannot be said for his mental
+    state, the subject has stopped responding to his birth name and almost exclusively
+    refers to himself as \u201CThe Protector\u201D and his behavior makes one see
+    why he is dubbed that.The limited interaction he\u2019s had with our captured
+    specimen seem to show that they look up to him and he has certainly accepted
+    that role, Clark is protective of them and they follow his every word, where
+    subjects 001 and 002 see the specimen more as their lesser, Clark treats them
+    closer to soldiers with whom he has a close bond.And as for 001 and 002 the three
+    seem to treat each other closer to \u201Cequals\u201D and get on surprisingly
+    well with each other, but make no mistake they still do have somewhat of a power
+    hierarchy amongst the three of them, with subject 001, of course, being at the
+    top.Conclusion:\n\nI think we should hold off on further assimilation, considering
+    the three wildly different results we\u2019ve seen up to this point it\u2019s
+    too risky of a procedure to pull off at this point of time and witnessing Clark\u2019s
+    transformation has just further cemented this for me.\n- Signed Dr. Jess Rogers"
+  type: 1
+  icon: {fileID: 0}
