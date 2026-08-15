@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
+  m_Name: Note03_Candidates
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Subject 003 - Candidates
+  itemDescription: The unwilling volunteers
+  fullNoteContent: "Below is a list of candidates for consideration in our experimentation,
+    specifically for subject 003, compiled by Dr. Jess Rogers and Dr. Tony Glenn:\n\n1.
+    Carter Moors - Janitor: Working in S4, digging into his life outside Pangea shows
+    no wife or kids, contact with other family members unknown.\n\n(Handwritten)
+    Notes: No, he is quite well known among the staff of S4 and I\u2019m sure some
+    of them won\u2019t take too kindly to their own friend being taken for experimentation,
+    and besides if we can\u2019t confirm that no one on the outside will come and
+    ask questions then it\u2019s too big of a risk to take.\n\n2. Danny Victor -
+    Construction: As with Mr. Moors, no wife or kids,and we can confirm that Mr.Victor
+    has very little to essentially no contact with other family members.\n\n(Handwritten)
+    Notes: No, construction is a small team compared to others in Pangea, and one
+    that is unaware of the full extent of what we\u2019re doing, so they are bound
+    to notice one of their own going missing and in turn sticking their nose where
+    it doesn\u2019t belong.\n\n3. Howard Clark - S4 Security: Also working in S4,
+    he has no friends both inside Pangea and out, investigations show no wife, kids
+    or any other family.\n\n(Handwritten) Notes: He is our best bet yet, no one on
+    the outside to ask questions and people inside are far less likely to care about
+    one security officer, who spends all his time alone in the office, going missing
+    rather than the janitor they see and talk to every day, we can tell them that
+    he volunteered for this anyway, it\u2019s not like anyone knows him well enough
+    to confirm that."
+  type: 1
+  icon: {fileID: 0}

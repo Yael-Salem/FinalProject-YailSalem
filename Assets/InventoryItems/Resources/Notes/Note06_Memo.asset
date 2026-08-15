@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
+  m_Name: Note06_Memo
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Memo to all sector managers, Pangea Laboratories
+  itemDescription: Running on borrowed time
+  fullNoteContent: "TO: All Sector and department managers\n\nFROM: Todd Milford,
+    Laboratory Director, Pangea Laboratories\n\nDATE: 02.07.2006\n\nSUBJECT: Results\n\n\nWe
+    NEED results, we are already on thin ice and time is not on our side.\n\nThe
+    government is already close to shutting us down, if we don\u2019t show them something
+    then all of our jobs are on the line and I\u2019m hard pressed to believe that
+    it will end well for any of us. \n\nSo that\u2019s why I\u2019m fast tracking
+    work on The Core Project, we need to have it ready by the end of this year at
+    the latest in order to conduct the first experiment early next year, no further
+    delays. \n\nFurthermore I\u2019m assigning Sofia to oversee this project, from
+    now on any and all progress and updates is to be reported directly to her, I
+    will focus on buying us time so we can at least meet this new deadline."
+  type: 1
+  icon: {fileID: 0}
