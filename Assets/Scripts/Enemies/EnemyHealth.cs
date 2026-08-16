@@ -8,6 +8,9 @@ public class EnemyHealth : MonoBehaviour
    public float currentHealth;
 
    private bool isDead = false;
+   
+   // Event to fire when an enemy dies
+   public static event Action<GameObject> onEnemyDied;
 
    private void Awake()
    {
@@ -22,6 +25,8 @@ public class EnemyHealth : MonoBehaviour
       currentHealth -= damage;
 
       currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+
+      Debug.Log($"Enemy health: {currentHealth}");
       
       // Forcing the enemy to aggro when hit
       if(TryGetComponent<Enemy>(out var enemyAI))
@@ -30,6 +35,9 @@ public class EnemyHealth : MonoBehaviour
       if (currentHealth <= 0)
       {
          isDead = true;
+         
+         onEnemyDied?.Invoke(gameObject);
+         
          Destroy(gameObject);
       }
    }

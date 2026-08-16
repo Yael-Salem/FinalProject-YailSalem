@@ -56,7 +56,21 @@ public class Lever : Interactable
         if (leverPulledCount < 3)
         {
             leverPulledCount++;
-            ObjectiveManager.Instance.TriggerObjective($"override_{leverPulledCount}");
+            
+            // Checking if the final lever has been pulled and triggering a different objective if it has
+            if (leverPulledCount == 3)
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                DialogueManager.Instance.StartDialogue("observation_room_scene_start", player, () =>
+                {
+                    ObjectiveManager.Instance.TriggerObjective("survive");
+                });
+            }
+                
+
+            else
+                ObjectiveManager.Instance.TriggerObjective($"override_{leverPulledCount}");
+            
         }
     }
 

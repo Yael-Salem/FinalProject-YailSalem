@@ -21,7 +21,8 @@ public class Door : Interactable
     private enum LockMode
     {
         PhaseGated,
-        Permanent
+        Permanent,
+        LocksAtPhase
     }
 
     [SerializeField] private LockMode lockMode = LockMode.PhaseGated; // Each door opens at some point by default
@@ -48,7 +49,28 @@ public class Door : Interactable
         if (lockMode == LockMode.Permanent || GameManager.Instance == null)
             return;
 
-        isLocked = !GameManager.Instance.IsPhaseAtLeast(requiredPhase);
+        if (lockMode == LockMode.PhaseGated)
+        {
+            isLocked = !GameManager.Instance.IsPhaseAtLeast(requiredPhase);
+        }
+        
+        else if (lockMode == LockMode.LocksAtPhase)
+        {
+            bool shouldBeLocked = GameManager.Instance.IsPhaseAtLeast(requiredPhase);
+
+            // If the door is open and needs to be locked we force it to close
+            if (shouldBeLocked && !isLocked && isOpen)
+            {
+                isOpen = false;
+                
+                if(movementCoroutine != null)
+                    StopCoroutine(movementCoroutine);
+
+                movementCoroutine = StartCoroutine(ToggleDoor());
+            }
+
+            isLocked = shouldBeLocked;
+        }
     }
 
     private void HandlePhaseChanged(GamePhase previousPhase, GamePhase newPhase)
