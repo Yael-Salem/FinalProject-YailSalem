@@ -10,6 +10,7 @@ TagManager:
   - cutscene_map
   - cutscene_security_camera
   - cutscene_vent
+  - cutscene_vent_2
   layers:
   - Default
   - TransparentFX

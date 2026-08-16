@@ -326,20 +326,19 @@
                 {
                     "speaker": "Sam",
                     "text": "Christian?! Christian! What's going on over there?!",
-                    "lookTargetTag": ""
+                    "lookTargetTag": "cutscene_vent_2"
                 },
                 {
                     "speaker": "Christian",
                     "text": "I don't know! I pulled the last switch and the door just closed out of nowhere.",
-                    "lookTargetTag": ""
+                    "lookTargetTag": "cutscene_vent_2"
                 },
                 {
                     "speaker": "Sam",
                     "text": "Crap, he's got us cornered, hold on Christian I'll see what I can do from here",
-                    "lookTargetTag": ""
+                    "lookTargetTag": "cutscene_vent_2"
                 }
-            ],
-            "triggersObjectiveId": "survive"
+            ]
         },
         {
             "id": "observation_room_scene_end",
@@ -347,7 +346,7 @@
                 {
                     "speaker": "Sam",
                     "text": "I can't open it from here, but the door in front of you should take you directly to the manager's office, then you can leave through the door in his office.",
-                    "lookTargetTag": ""
+                    "lookTargetTag": "cutscene_vent_2"
                 }
             ],
             "triggersObjectiveId": "find_key"
