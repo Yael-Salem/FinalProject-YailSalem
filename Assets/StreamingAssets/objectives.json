@@ -59,6 +59,10 @@
     {
       "id": "way_back",
       "title": "Find a Way Back"
+    },
+    {
+      "id": "find_office",
+      "title": "Find a Way to the Manager's Office"
     }
   ]
 }

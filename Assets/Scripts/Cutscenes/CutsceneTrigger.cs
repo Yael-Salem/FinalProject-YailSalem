@@ -1,14 +1,19 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CutsceneTrigger : MonoBehaviour
 {
     // ID to know which scene to read from the script.json file
-    public string cutsceneId;
+    [SerializeField] private string cutsceneId;
+    
+    // Cutscene ID getter
+    public string CutsceneId => cutsceneId;
     
     // ID for saving if we have already watched the cutscene or not
     [ContextMenuItem("Generate new save ID", "GenerateSaveID")]
+    
     [SerializeField] private string cutsceneSaveId;
     
     [SerializeField] private string requiredCutsceneSaveId; // Contains the GUID of another cutscene that is required to view the current one, is empty if no cutscene is required
@@ -35,20 +40,29 @@ public class CutsceneTrigger : MonoBehaviour
         // Not playing the cutscene if the player has already seen it
         if (SaveManager.Instance != null &&
             SaveManager.Instance.playerSaveData.watchedCutscenesID.Contains(cutsceneSaveId))
+        {
+            Debug.Log($"Cutscene {cutsceneId} already watched");
             return;
+        }
+            
         
         // Checking if the scene required a previous cutscene to be viewed, and not playing the current scene if the required previous scene hasn't been viewed
         if (!string.IsNullOrEmpty(requiredCutsceneSaveId) &&
             !SaveManager.Instance.playerSaveData.watchedCutscenesID.Contains(requiredCutsceneSaveId))
+        {
+            Debug.Log($"Cutscene {cutsceneId} requires previous scene, previous scene was not watched");
             return;
-        
+        }
         // Checking if a certain objective needs to be active before playing, and not playing the scene unless it is active
         if (!string.IsNullOrEmpty(requiredObjectiveId)
             && SaveManager.Instance != null
             && !SaveManager.Instance.playerSaveData.completedObjectivesID.Contains(requiredObjectiveId))
+        {
+            Debug.Log($"Cutscene {cutsceneId} relevant objective not active");
             return;
-        
-        
+        }
+
+
         if (other.CompareTag("Player") && other.TryGetComponent<InputManager>(out var inputManager))
         {
             activeInputManager = inputManager;
@@ -60,6 +74,8 @@ public class CutsceneTrigger : MonoBehaviour
     // Function to start a specific cutscene with an optional parameter of a cutscene id to use in the cutscene interact script
     public void StartCutscene(GameObject player, string externalCutsceneId = null)
     {
+        Debug.Log($"Cutscene {cutsceneId} starting");
+        
         isCutsceneActive = true;
 
         PauseMenuManager.canPause = false;

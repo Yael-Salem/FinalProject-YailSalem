@@ -11,6 +11,7 @@ TagManager:
   - cutscene_security_camera
   - cutscene_vent
   - cutscene_vent_2
+  - cutscene_floor
   layers:
   - Default
   - TransparentFX
