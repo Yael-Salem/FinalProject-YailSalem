@@ -3,11 +3,16 @@ using UnityEngine;
 
 public class CutsceneInteract : Interactable
 {
-    [SerializeField] private string cutsceneId;
+    [SerializeField] private bool destroyAfterUse = true;
+    
+    [SerializeField] private CutsceneTrigger trigger; // An empty and unused cutscene trigger in order to start and finish the current cutscene without messing up other scenes
+    
+    private string cutsceneId;
     
     protected override void Interact()
     {
-        CutsceneTrigger trigger = FindFirstObjectByType<CutsceneTrigger>(FindObjectsInactive.Include);
+        if (trigger != null)
+            cutsceneId = trigger.CutsceneId;
 
         GameObject player = GameObject.FindWithTag("Player");
 
@@ -18,6 +23,7 @@ public class CutsceneInteract : Interactable
             trigger.StartCutscene(player, cutsceneId);
         }
         
-        Destroy(gameObject);
+        if(destroyAfterUse)
+            Destroy(gameObject);
     }
 }
