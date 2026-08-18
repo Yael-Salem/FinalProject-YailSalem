@@ -364,8 +364,7 @@
                     "text": "Consider this a final test for you, should you survive, I'll be waiting for you, good luck.",
                     "lookTargetTag": "cutscene_security_camera"
                 }
-            ],
-            "triggersObjectiveId": "survive"
+            ]
         },
         {
             "id": "hallway_scene_3",

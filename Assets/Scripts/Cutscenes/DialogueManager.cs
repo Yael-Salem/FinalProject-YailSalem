@@ -209,6 +209,9 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(typingCoroutine);
         
         sentences.Clear();
+
+        isTyping = false;
+        
         EndDialogue();
     }
     

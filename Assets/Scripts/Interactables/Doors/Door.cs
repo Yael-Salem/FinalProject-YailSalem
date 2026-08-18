@@ -57,7 +57,7 @@ public class Door : Interactable
         else if (lockMode == LockMode.LocksAtPhase)
         {
             bool shouldBeLocked = GameManager.Instance.IsPhaseAtLeast(requiredPhase);
-
+            
             // If the door is open and needs to be locked we force it to close
             if (shouldBeLocked && !isLocked && isOpen)
             {
@@ -65,10 +65,10 @@ public class Door : Interactable
                 
                 if(movementCoroutine != null)
                     StopCoroutine(movementCoroutine);
-
+            
                 movementCoroutine = StartCoroutine(ToggleDoor());
             }
-
+            
             isLocked = shouldBeLocked;
         }
     }

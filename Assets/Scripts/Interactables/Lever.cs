@@ -22,6 +22,9 @@ public class Lever : Interactable
     {
         get => leverPulledCount;
     }
+    
+    // Cutscene trigger to start the scene for the third lever pull
+    [SerializeField] private CutsceneTrigger trigger;
 
     // Boolean value to prevent the same lever being pulled multiple times
     private bool hasBeenPulled = false;
@@ -60,11 +63,22 @@ public class Lever : Interactable
             // Checking if the final lever has been pulled and triggering a different objective if it has
             if (leverPulledCount == 3)
             {
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                DialogueManager.Instance.StartDialogue("observation_room_scene_start", player, () =>
+                // GameObject player = GameObject.FindGameObjectWithTag("Player");
+                // DialogueManager.Instance.StartDialogue("observation_room_scene_start", player, () =>
+                // {
+                //     ObjectiveManager.Instance.TriggerObjective("survive");
+                // });
+                
+                GameObject player = GameObject.FindWithTag("Player");
+
+                if (player != null && player.TryGetComponent<InputManager>(out var inputManager))
                 {
+                    trigger.activeInputManager = inputManager;
+            
+                    trigger.StartCutscene(player, "observation_room_scene_start");
+                    
                     ObjectiveManager.Instance.TriggerObjective("survive");
-                });
+                }
             }
                 
 
