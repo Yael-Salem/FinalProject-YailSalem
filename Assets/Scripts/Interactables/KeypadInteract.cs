@@ -22,6 +22,9 @@ public class KeypadInteract : Interactable
     private const int CODE_LENGTH = 4;
 
     private string enteredCode = "";
+    
+    // Flag to indicate if the player has interacted with the keypad before, and triggering the relevant objective if it is the first time
+    private bool firstInteraction = true;
 
     protected override void Interact()
     {
@@ -100,6 +103,12 @@ public class KeypadInteract : Interactable
     
     private void CloseKeypad()
     {
+        if (firstInteraction)
+        {
+            ObjectiveManager.Instance.TriggerObjective("find_code");
+            firstInteraction = false;
+        }
+        
         keypadPanel.SetActive(false);
 
         Time.timeScale = 1;
