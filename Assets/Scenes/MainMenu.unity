@@ -1893,6 +1893,14 @@ PrefabInstance:
       propertyPath: mainMenuPanel
       value: 
       objectReference: {fileID: 978307700}
+    - target: {fileID: 1477321173449720832, guid: 6d83aa0309adacb4eb65d5d21d8ec832, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477321173449720832, guid: 6d83aa0309adacb4eb65d5d21d8ec832, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5323236878866767507, guid: 6d83aa0309adacb4eb65d5d21d8ec832, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1976,6 +1984,22 @@ PrefabInstance:
     - target: {fileID: 8845609625893235134, guid: 6d83aa0309adacb4eb65d5d21d8ec832, type: 3}
       propertyPath: m_Name
       value: OptionsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845609625893235134, guid: 6d83aa0309adacb4eb65d5d21d8ec832, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164979327585519705, guid: 6d83aa0309adacb4eb65d5d21d8ec832, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164979327585519705, guid: 6d83aa0309adacb4eb65d5d21d8ec832, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9164979327585519705, guid: 6d83aa0309adacb4eb65d5d21d8ec832, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
