@@ -19,13 +19,6 @@ public class AttackState : BaseState
 
     public override void Perform()
     {
-        // Checking if the player is Hiding and not attacking if they are
-        if (enemy.Player.GetComponent<PlayerHiding>().isHiding)
-        {
-            stateMachine.ChangeState(stateMachine.searchState);
-            return;
-        }
-        
         float distanceToPlayer = Vector3.Distance(enemy.transform.position, enemy.Player.transform.position);
 
         // Calculate line-of-sight vector from enemy eyes to player eyes
