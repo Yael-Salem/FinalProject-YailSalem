@@ -94,13 +94,4 @@ public class ObjectiveManager : MonoBehaviour
     {
         return SaveManager.Instance != null && SaveManager.Instance.playerSaveData.completedObjectivesID.Contains(id);
     }
-    
-    // TODO DEBUG Delete later
-    [SerializeField] private string debugObjectiveId;
-
-    [ContextMenu("Trigger Debug Objective")]
-    private void TriggerDebugObjective()
-    {
-        TriggerObjective(debugObjectiveId);
-    }
 }
