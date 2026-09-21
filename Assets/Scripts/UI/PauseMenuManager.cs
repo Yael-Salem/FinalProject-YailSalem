@@ -25,6 +25,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private OptionsMenuManager optionsMenuManager;
 
     private bool isPaused = false;
+    public bool IsPaused => isPaused;
     
     // Public boolean to control the player's ability to pause, for example: disabling the ability to pause during a cutscene
     // Value is set by other scripts

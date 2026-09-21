@@ -21,6 +21,9 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private PauseMenuManager pauseMenu;
     
+    // TODO DEBUG DebugActions Reference
+    private PlayerInput.DebugActions debug;
+    
     void Awake()
     {
         playerInput = new PlayerInput();
@@ -66,6 +69,38 @@ public class InputManager : MonoBehaviour
 
         onFoot.OpenInventory.performed += ctx => HandleInventoryInput();
         uiActions.CloseInventory.performed += ctx => HandleInventoryInput();
+        
+        // TODO DEBUG
+        debug = playerInput.Debug;
+        
+        // TODO DEBUG Controls delete later
+        #region DebugControls
+        
+        // Test damage and heal UI
+        health = GetComponent<PlayerHealth>();
+        
+        debug.Damage.performed += ctx => health.TakeDamage(Random.Range(5, 10));
+        debug.Heal.performed += ctx => health.RestoreHealth(Random.Range(5, 10));
+
+        debug.Save.performed += ctx =>
+        {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.SaveGame(transform.position);
+                Debug.Log("DEBUG: Game saved");
+            }
+        };
+
+        debug.Load.performed += ctx =>
+        {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.LoadGame();
+                Debug.Log("DEBUG: Game Loaded");
+            }
+        };
+
+        #endregion
     }
 
     // Update is called once per frame
@@ -84,12 +119,18 @@ public class InputManager : MonoBehaviour
     {
         playerInput.OnFoot.Enable();
         playerInput.UI.Enable();
+        
+        // TODO DEBUG controls enable
+        playerInput.Debug.Enable();
     }
 
     private void OnDisable()
     {
         playerInput.OnFoot.Disable();
         playerInput.UI.Disable();
+        
+        // TODO DEBUG controls disable
+        playerInput.Debug.Disable();
     }
 
     // Function to handle disabling player movement when they open the inventory and then re-enabling it once they close the inventory

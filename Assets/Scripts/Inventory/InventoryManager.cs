@@ -13,6 +13,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private InventoryUI uiScript;
 
+    [SerializeField] private PauseMenuManager pauseMenuManager;
+
     private void Awake()
     {
         if (Instance == null)
@@ -24,6 +26,9 @@ public class InventoryManager : MonoBehaviour
 
     public void ToggleInventory()
     {
+        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
+            return;
+        
         bool isOpen = !inventoryPanel.activeSelf;
         inventoryPanel.SetActive(isOpen);
 
@@ -34,6 +39,9 @@ public class InventoryManager : MonoBehaviour
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            
+            // Disabling the player's ability to pause the game
+            PauseMenuManager.canPause = false;
         }
         
         else
@@ -41,6 +49,9 @@ public class InventoryManager : MonoBehaviour
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            
+            // Re-enabling the player's ability to pause the game
+            PauseMenuManager.canPause = true;
         }
     }
 
