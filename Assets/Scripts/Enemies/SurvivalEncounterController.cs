@@ -10,6 +10,8 @@ public class SurvivalEncounterController : MonoBehaviour
     [SerializeField] private GamePhase survivalStartPhase;
     [SerializeField] private GamePhase survivalEndPhase;
 
+    [SerializeField] private CutsceneTrigger trigger; // Trigger used to start cutscene after the sequence ends
+
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     private int enemiesRemaining;
 
@@ -50,11 +52,15 @@ public class SurvivalEncounterController : MonoBehaviour
 
         if (enemiesRemaining <= 0)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            DialogueManager.Instance.StartDialogue("observation_room_scene_end", player, () =>
+            if (trigger != null)
             {
-                GameManager.Instance.SetPhase(survivalEndPhase);
-            });
+                string cutsceneId = trigger.CutsceneId;
+                
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                
+                trigger.StartCutscene(player, cutsceneId);
+            }
+                
         }
             
     }

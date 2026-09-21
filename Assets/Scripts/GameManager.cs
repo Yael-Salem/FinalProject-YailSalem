@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 public enum GamePhase
 {
-    Intro,
-    LobbyScene,
-    FirstEncounter,
-    SecondLeverPuzzle,
-    LabSurvivalSequenceStart,
-    LabSurvivalSequenceEnd,
-    HallwaySurvival,
-    Descent,
-    Chase,
-    Ending
+    Intro, // 1
+    LobbyScene, // 2
+    FirstEncounter, // 3
+    SecondLeverPuzzle, // 4
+    LabSurvivalSequenceStart, // 5
+    LabSurvivalSequenceEnd, // 6
+    HallwaySurvival, // 7
+    Descent, // 8
+    Chase, // 9
+    Ending // 10
 }
 
 [Serializable]
@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     
     // Generic flags for anything that doesn't warrant a full game phase
     private HashSet<string> activeFlags = new HashSet<string>();
+    
+    [Header("Debug")]
+    [SerializeField] private GamePhase currentPhaseDebugView;
 
 
     private void Awake()
@@ -66,15 +69,30 @@ public class GameManager : MonoBehaviour
 
     private void HandleObjectiveCompleted(string completedId)
     {
+        Debug.Log($"[GameManager] Objective completed: {completedId}, currentPhase: {currentPhase}");
+        
+        PhaseTransitionRule bestRule = null;
+        
         // Checking every rule since a completed objective might satisfy more than one rule
         foreach (PhaseTransitionRule rule in phaseTransitionRules)
         {
+            Debug.Log($"[GameManager] Checking rule -> target: {rule.targetPhase}, required: {string.Join(",", rule.requiredObjectiveIds)}, allComplete: {AllObjectivesComplete(rule.requiredObjectiveIds)}");
+            
             if (rule.targetPhase <= currentPhase)
                 continue; // The target phase comes before the current phase so we skip it as to not move backwards in the game
+            
+            if(bestRule != null && rule.targetPhase >= bestRule.targetPhase)
+                continue; // Skip, since we already found a better candidate
 
             if (AllObjectivesComplete(rule.requiredObjectiveIds))
-                SetPhase(rule.targetPhase);
+                bestRule = rule;
         }
+        
+        if (bestRule != null)
+            SetPhase(bestRule.targetPhase);
+        
+        else
+            Debug.Log("[GameManager] No qualifying rule found this pass.");
     }
     
     private bool AllObjectivesComplete(List<string> ids)
@@ -95,6 +113,9 @@ public class GameManager : MonoBehaviour
 
         GamePhase previousPhase = currentPhase;
         currentPhase = newPhase;
+        
+        // Updating debug view of the current gamephase
+        currentPhaseDebugView = newPhase;
         
         Debug.Log($"Game phase changed from: {previousPhase} to {newPhase}");
         onPhaseChanged?.Invoke(previousPhase, newPhase);
