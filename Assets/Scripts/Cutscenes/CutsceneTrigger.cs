@@ -23,6 +23,8 @@ public class CutsceneTrigger : MonoBehaviour
     public InputManager activeInputManager;
     private bool isCutsceneActive = false;
 
+    public event Action onCutsceneEnded;
+
     private void Start()
     {
         // Checking if the cutscene ID is found in the list of watched cutscenes and disabling the collider if it is
@@ -102,6 +104,8 @@ public class CutsceneTrigger : MonoBehaviour
             SaveManager.Instance.playerSaveData.watchedCutscenesID.Add(cutsceneSaveId);
             Debug.Log($"Cutscene {cutsceneId} has been saved, save ID: {cutsceneSaveId}");
         }
+        
+        onCutsceneEnded?.Invoke();
     }
 
     private void OnSubmitPressed(InputAction.CallbackContext obj)

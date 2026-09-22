@@ -29,6 +29,8 @@ public class Lever : Interactable
     // Boolean value to prevent the same lever being pulled multiple times
     private bool hasBeenPulled = false;
 
+    [SerializeField] private SurvivalEncounterController encounterController;
+
     private Coroutine pullCoroutine;
 
     private void Awake()
@@ -63,21 +65,17 @@ public class Lever : Interactable
             // Checking if the final lever has been pulled and triggering a different objective if it has
             if (leverPulledCount == 3)
             {
-                // GameObject player = GameObject.FindGameObjectWithTag("Player");
-                // DialogueManager.Instance.StartDialogue("observation_room_scene_start", player, () =>
-                // {
-                //     ObjectiveManager.Instance.TriggerObjective("survive");
-                // });
-                
                 GameObject player = GameObject.FindWithTag("Player");
 
                 if (player != null && player.TryGetComponent<InputManager>(out var inputManager))
                 {
                     trigger.activeInputManager = inputManager;
+
+                    trigger.onCutsceneEnded += OnSurvivalIntroCutsceneEnded;
             
                     trigger.StartCutscene(player, "observation_room_scene_start");
                     
-                    ObjectiveManager.Instance.TriggerObjective("survive");
+                    
                 }
             }
                 
@@ -86,6 +84,14 @@ public class Lever : Interactable
                 ObjectiveManager.Instance.TriggerObjective($"override_{leverPulledCount}");
             
         }
+    }
+
+    private void OnSurvivalIntroCutsceneEnded()
+    {
+        trigger.onCutsceneEnded -= OnSurvivalIntroCutsceneEnded;
+        
+        ObjectiveManager.Instance.TriggerObjective("survive");
+        encounterController.SpawnEnemies();
     }
 
     private IEnumerator PullHandle()

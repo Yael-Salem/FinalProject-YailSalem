@@ -19,6 +19,7 @@ public class SurvivalEncounterController : MonoBehaviour
     {
         GameManager.onPhaseChanged += HandlePhaseChanged;
         EnemyHealth.onEnemyDied += HandleEnemyDied;
+        
     }
 
     private void OnDisable()
@@ -32,6 +33,11 @@ public class SurvivalEncounterController : MonoBehaviour
         if (newPhase != survivalStartPhase)
             return;
         
+        
+    }
+
+    public void SpawnEnemies()
+    {
         spawnedEnemies.Clear();
         enemiesRemaining = spawnPoints.Length;
 

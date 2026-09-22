@@ -28390,7 +28390,7 @@ MonoBehaviour:
     - override_2
   - targetPhase: 5
     requiredObjectiveIds:
-    - override_2
+    - survive
     - find_code
   - targetPhase: 6
     requiredObjectiveIds:
