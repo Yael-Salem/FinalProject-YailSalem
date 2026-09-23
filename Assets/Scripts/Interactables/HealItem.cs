@@ -21,11 +21,14 @@ public class HealItem : Interactable
                 playerHealth.RestoreHealth(healAmount);
 
                 Debug.Log($"Player healed {healAmount} points");
+                
+                Destroy(gameObject);
             }
 
             else
             {
                 Debug.Log("Player already at full health");
+                this.promptMessage = "Health already full";
             }
         }
     }
