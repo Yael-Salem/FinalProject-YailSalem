@@ -361,10 +361,11 @@
                 },
                 {
                     "speaker": "???",
-                    "text": "Consider this a final test for you, should you survive, I'll be waiting for you, good luck.",
+                    "text": "I'll be waiting for you, see you in S5",
                     "lookTargetTag": "cutscene_security_camera"
                 }
-            ]
+            ],
+            "triggersObjectiveId": "head_down"
         },
         {
             "id": "hallway_scene_3",
@@ -374,8 +375,7 @@
                     "text": "Cecilia really has outdone herself hasn't she?\nWell go on then, don't keep me waiting.",
                     "lookTargetTag": "cutscene_security_camera"
                 }
-            ],
-            "triggersObjectiveId": "head_down"
+            ]
         },
         {
             "id": "lobby_scene_5",
