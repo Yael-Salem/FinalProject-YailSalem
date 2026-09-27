@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ElevatorPanel : Interactable
 {
     [SerializeField] private string noCardObjectiveId; // The objective that triggers when the player interacts without the keycard (for the first time)
 
     private bool hasTriggeredObjective = false;
+    
+    // TODO Change scene name from demo end screen to next level scene
+    private string nextSceneName = "DemoEndScreen";
     
     protected override void Interact()
     {
@@ -23,5 +27,8 @@ public class ElevatorPanel : Interactable
         }
 
         Debug.Log("Elevator activated, load next level");
+        
+        // TODO Demo end screen, Replace with actual next level
+        SceneManager.LoadSceneAsync(nextSceneName);
     }
 }

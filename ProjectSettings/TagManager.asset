@@ -12,6 +12,7 @@ TagManager:
   - cutscene_vent
   - cutscene_vent_2
   - cutscene_floor
+  - cutscene_bjorn
   layers:
   - Default
   - TransparentFX
