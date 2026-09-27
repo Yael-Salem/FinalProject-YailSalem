@@ -60,7 +60,7 @@ public class PlayerHealth : MonoBehaviour
             Die();
     }
 
-    private void Die()
+    public void Die()
     {
         if (gameOverScreen != null)
         {
