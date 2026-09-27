@@ -57,7 +57,7 @@
                 },
                 {
                     "speaker": "Sam",
-                    "text": "The only possible exit I've found was a door the leads to someplace called S5 but it's a dead end too,something might be blocking it from the other side",
+                    "text": "The only possible exit I've found was a door the leads to someplace called S5 but I think something's blocking it from the other side",
                     "lookTargetTag": "cutscene_door"
                 },
                 {
@@ -215,7 +215,7 @@
                 },
                 {
                     "speaker": "Christian",
-                    "text": "and there was this thing talking about taking me to The Protector\nWhatever that means",
+                    "text": "and there was this....thing, I don't even know what to call it",
                     "lookTargetTag": "cutscene_vent"
                 },
                 {
@@ -439,7 +439,7 @@
                 {
                     "speaker": "Christian",
                     "text": "What the hell big fella",
-                    "lookTargetTag": "cutscene_enemy_joke"
+                    "lookTargetTag": "cutscene_bjorn"
                 }
             ]
         },

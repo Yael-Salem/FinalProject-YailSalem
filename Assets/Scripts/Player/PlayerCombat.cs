@@ -10,7 +10,7 @@ public class PlayerCombat : MonoBehaviour
     public float attackDistance = 3f;
     public float attackDelay = 0.4f;
     public float attackSpeed = 1f;
-    public int attackDamage = 1;
+    public int attackDamage = 10;
     public LayerMask attackLayer;
 
     private bool attacking = false;

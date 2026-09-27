@@ -180,12 +180,16 @@ MonoBehaviour:
 
     WASD - Move
 
-    E - Interact
+    Shift - Sprint
+
+    Ctrl - Crouch
+
+    E
+    - Interact
 
     LMB - Attack
 
-    RMB
-    - Block'
+    RMB - Block'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -251,7 +255,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -85.3808, w: -128.3228}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -413,7 +417,7 @@ GameObject:
   - component: {fileID: 274429993}
   - component: {fileID: 274429992}
   m_Layer: 0
-  m_Name: TestAudio
+  m_Name: MainMenuAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,7 +434,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 9512c2754f9927f48a2ef6b296f03a2d, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 005d30580d1f5cd48a5c6844ed2ef18e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 924cd6a8062adab47923be1738965b27, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
