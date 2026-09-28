@@ -63,7 +63,7 @@ public class OptionsMenuManager : MonoBehaviour
         QualitySettings.globalTextureMipmapLimit = 2;
         
         // Setting the overall resolution to 720p
-        Screen.SetResolution(1280, 720, Screen.fullScreenMode);
+        //Screen.SetResolution(1280, 720, Screen.fullScreenMode);
         
         Debug.Log("Low graphics selected");
     }
@@ -76,7 +76,7 @@ public class OptionsMenuManager : MonoBehaviour
         QualitySettings.globalTextureMipmapLimit = 1;
         
         // Setting the overall resolution to 900p
-        Screen.SetResolution(1600, 900, Screen.fullScreenMode);
+        //Screen.SetResolution(1600, 900, Screen.fullScreenMode);
         
         Debug.Log("Medium graphics selected");
     }
@@ -89,7 +89,7 @@ public class OptionsMenuManager : MonoBehaviour
         QualitySettings.globalTextureMipmapLimit = 0;
         
         // Setting the overall resolution to 1080p
-        Screen.SetResolution(1920, 1080, Screen.fullScreenMode);
+        //Screen.SetResolution(1920, 1080, Screen.fullScreenMode);
         
         Debug.Log("High graphics selected");
     }

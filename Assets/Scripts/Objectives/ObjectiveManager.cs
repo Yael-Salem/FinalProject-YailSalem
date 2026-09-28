@@ -94,4 +94,16 @@ public class ObjectiveManager : MonoBehaviour
     {
         return SaveManager.Instance != null && SaveManager.Instance.playerSaveData.completedObjectivesID.Contains(id);
     }
+
+    public void HideObjectiveUI()
+    {
+        if(objectiveUI != null)
+            objectiveUI.HideObjective();
+    }
+    
+    public void ShowObjectiveUI()
+    {
+        if(objectiveUI != null)
+            objectiveUI.ShowObjective();
+    }
 }

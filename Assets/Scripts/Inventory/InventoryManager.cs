@@ -34,6 +34,9 @@ public class InventoryManager : MonoBehaviour
 
         if (isOpen)
         {
+            if(ObjectiveManager.Instance != null)
+                ObjectiveManager.Instance.HideObjectiveUI();
+            
             uiScript.RefreshUI();
             
             Time.timeScale = 0;
@@ -46,6 +49,9 @@ public class InventoryManager : MonoBehaviour
         
         else
         {
+            if(ObjectiveManager.Instance != null)
+                ObjectiveManager.Instance.ShowObjectiveUI();
+            
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
