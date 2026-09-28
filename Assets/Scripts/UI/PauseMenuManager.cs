@@ -65,6 +65,9 @@ public class PauseMenuManager : MonoBehaviour
 
     private void PauseGame()
     {
+        if(ObjectiveManager.Instance != null)
+            ObjectiveManager.Instance.HideObjectiveUI();
+        
         isPaused = true;
         pausePanel.SetActive(true);
         optionsPanel.SetActive(false);
@@ -88,6 +91,9 @@ public class PauseMenuManager : MonoBehaviour
 
     private void ContinueGame()
     {
+        if(ObjectiveManager.Instance != null)
+            ObjectiveManager.Instance.ShowObjectiveUI();
+        
         isPaused = false;
         pausePanel.SetActive(false);
         optionsPanel.SetActive(false);

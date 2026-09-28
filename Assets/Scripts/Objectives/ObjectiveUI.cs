@@ -40,4 +40,18 @@ public class ObjectiveUI : MonoBehaviour
         objectiveHeaderText.SetActive(true);
         hideTimer = displayDuration;
     }
+
+    public void HideObjective()
+    {
+        if (objectiveHeaderText != null)
+            objectiveHeaderText.SetActive(false);
+        
+    }
+    
+    public void ShowObjective()
+    {
+        if (objectiveHeaderText != null && hideTimer > 0)
+            objectiveHeaderText.SetActive(true);
+        
+    }
 }

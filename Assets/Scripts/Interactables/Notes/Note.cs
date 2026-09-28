@@ -47,6 +47,9 @@ public class Note : Interactable
 
     protected void OpenNote(ItemData data)
     {
+        if(ObjectiveManager.Instance != null)
+            ObjectiveManager.Instance.HideObjectiveUI();
+        
         itemData = data;
         
         displayText.text = itemData.fullNoteContent;
@@ -88,6 +91,9 @@ public class Note : Interactable
         
         else
         {
+            if(ObjectiveManager.Instance != null)
+                ObjectiveManager.Instance.HideObjectiveUI();
+            
             if(SaveManager.Instance != null && !string.IsNullOrEmpty(noteId))
                 SaveManager.Instance.playerSaveData.collectiblesIDs.Add(noteId);
 
