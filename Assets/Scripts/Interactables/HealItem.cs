@@ -16,7 +16,7 @@ public class HealItem : Interactable
         {
             if (playerHealth.Health < 100)
             {
-                int healAmount = Random.Range(1, 11);
+                int healAmount = Random.Range(25, 45);
             
                 playerHealth.RestoreHealth(healAmount);
 
