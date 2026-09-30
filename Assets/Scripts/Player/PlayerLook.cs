@@ -22,6 +22,21 @@ public class PlayerLook : MonoBehaviour
     private bool isOverrideActive = false;
     private Transform lookTarget;
 
+    private const string SENSITIVITY_PREFS_KEY = "MouseSensitivity";
+    
+    [SerializeField] private float minSensitivity = 0.05f;
+    [SerializeField] private float maxSensitivity = 0.3f;
+
+    [SerializeField] private float maxLookDeltaPerFrame = 50f;
+
+    private bool suppressNextFrame;
+
+    private void Awake()
+    {
+        float savedSensitivity = PlayerPrefs.GetFloat(SENSITIVITY_PREFS_KEY, 50f);
+        ApplySensitivity(savedSensitivity);
+    }
+    
     private void Update()
     {
         if (isOverrideActive && lookTarget != null)
@@ -64,13 +79,18 @@ public class PlayerLook : MonoBehaviour
     {
         if (isOverrideActive)
             return;
-        
-        float mouseX = input.x;
 
-        float mouseY = input.y;
+        if (suppressNextFrame)
+        {
+            suppressNextFrame = false;
+            return;
+        }
+
+        float mouseX = Mathf.Clamp(input.x, -maxLookDeltaPerFrame, maxLookDeltaPerFrame);
+        float mouseY = Mathf.Clamp(input.y, -maxLookDeltaPerFrame, maxLookDeltaPerFrame);
         
         // Calculate camera rotation for looking up and down
-        xRotation -= (mouseY * Time.deltaTime) * ySensitivity;
+        xRotation -= mouseY * ySensitivity;
 
         xRotation = Mathf.Clamp(xRotation, -80, 80);
         
@@ -78,7 +98,7 @@ public class PlayerLook : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
         
         // Rotate player to look left and right
-        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+        transform.Rotate(Vector3.up * (mouseX * xSensitivity));
 
     }
 
@@ -93,6 +113,20 @@ public class PlayerLook : MonoBehaviour
     {
         lookTarget = null;
         isOverrideActive = false;
+    }
+    
+    public void ApplySensitivity(float sliderValue)
+    {
+        float sensitivity = Mathf.Lerp(minSensitivity, maxSensitivity, (sliderValue - 1f) / 99f);
+        
+        ySensitivity = sensitivity;
+        xSensitivity = sensitivity;
+    }
+
+    // Function to prevent mouse movement for the next frame
+    public void SetSuppressNextFrame()
+    {
+        suppressNextFrame = true;
     }
     
 }

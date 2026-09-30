@@ -66,6 +66,8 @@ public class InputManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
+        look.SetSuppressNextFrame();
 
         onFoot.OpenInventory.performed += ctx => HandleInventoryInput();
         uiActions.CloseInventory.performed += ctx => HandleInventoryInput();
