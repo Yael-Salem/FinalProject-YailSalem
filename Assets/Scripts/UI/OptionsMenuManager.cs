@@ -17,6 +17,9 @@ public class OptionsMenuManager : MonoBehaviour
     [Header("Toggles")]
     [SerializeField] private Toggle vSyncToggle;
     
+    [Header("Sliders")]
+    [SerializeField] private Slider sensitivitySlider;
+    
     // Event to know when the back button was clicked
     public event Action OnBackAction;
     
@@ -44,6 +47,13 @@ public class OptionsMenuManager : MonoBehaviour
 
         ApplyFrameRateSetting(QualitySettings.vSyncCount > 0);
 
+        if (sensitivitySlider != null)
+        {
+            float savedSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 50f);
+            sensitivitySlider.value = savedSensitivity;
+            sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+        }
+
     }
     
     private void OnBackBtnClicked()
@@ -51,6 +61,9 @@ public class OptionsMenuManager : MonoBehaviour
         // Switching to main menu
         if(optionsPanel != null)
             optionsPanel.SetActive(false);
+        
+        if(mainMenuPanel != null)
+            mainMenuPanel.SetActive(true);
         
         OnBackAction?.Invoke();
     }
@@ -115,6 +128,16 @@ public class OptionsMenuManager : MonoBehaviour
 
         return Mathf.RoundToInt((float)rate.numerator / rate.denominator);
     }
+    
+    private void OnSensitivityChanged(float value)
+    {
+        PlayerPrefs.SetFloat("MouseSensitivity", value);
+
+        PlayerLook playerLook = FindFirstObjectByType<PlayerLook>();
+        
+        if(playerLook != null)
+            playerLook.ApplySensitivity(value);
+    }
 
     private void OnDestroy()
     {
@@ -132,5 +155,8 @@ public class OptionsMenuManager : MonoBehaviour
         
         if(vSyncToggle != null)
             vSyncToggle.onValueChanged.RemoveListener(OnVSyncToggled);
+        
+        if(sensitivitySlider != null)
+            sensitivitySlider.onValueChanged.RemoveListener(OnSensitivityChanged);
     }
 }

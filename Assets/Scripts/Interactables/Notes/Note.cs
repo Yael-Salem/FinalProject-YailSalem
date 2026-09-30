@@ -64,6 +64,8 @@ public class Note : Interactable
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        PauseMenuManager.canPause = false;
     }
     
     // Function to reset and add listeners to all the buttons
@@ -82,6 +84,7 @@ public class Note : Interactable
     public void CloseNote()
     {
         notePanel.SetActive(false);
+        PauseMenuManager.canPause = true;
 
         // Checking if we opened the note from the inventory UI
         if (GetComponent<RectTransform>() != null)
