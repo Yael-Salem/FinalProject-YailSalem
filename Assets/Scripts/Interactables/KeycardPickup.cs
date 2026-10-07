@@ -5,12 +5,13 @@ public class KeycardPickup : Interactable
 
     [SerializeField] private string objectiveId; // The objective id that triggers when the keycard is picked up
 
-    private static bool hasCard = false;
-    public static bool HasCard => hasCard;
+    [SerializeField] private MonoBehaviour targetObject; // The object that will be unlocked by the keycard
     
     protected override void Interact()
     {
-        hasCard = true;
+        // Checking if the targetObject given can be unlocked by a keycard
+        if (targetObject is IKeycardUnlockable unlockable)
+            unlockable.HasCard = true;
         
         if(!string.IsNullOrEmpty(objectiveId))
             ObjectiveManager.Instance.TriggerObjective(objectiveId);
