@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class KeycardDoor : Door
+public class KeycardDoor : Door, IKeycardUnlockable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public bool HasCard { get; set; } = false;
 
-    // Update is called once per frame
-    void Update()
+    protected override void Interact()
     {
+        if (!HasCard)
+        {
+            this.promptMessage = "Keycard Needed";
+            return;
+        }
         
+        base.Interact();
     }
 }

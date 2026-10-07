@@ -1,18 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ElevatorPanel : Interactable
+public class ElevatorPanel : Interactable, IKeycardUnlockable
 {
     [SerializeField] private string noCardObjectiveId; // The objective that triggers when the player interacts without the keycard (for the first time)
 
     private bool hasTriggeredObjective = false;
-    
+
+    public bool HasCard { get; set; } = false;
+
     // TODO Change scene name from demo end screen to next level scene
     private string nextSceneName = "DemoEndScreen";
     
     protected override void Interact()
     {
-        if (!KeycardPickup.HasCard)
+        if (!HasCard)
         {
             this.promptMessage = "Keycard needed";
 
