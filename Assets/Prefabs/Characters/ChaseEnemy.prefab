@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361ce16a35bdab847832a23bbc95bc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChaseEnemy
-  chaseSpeed: 8
+  chaseSpeed: 6
   catchDistance: 1.5
 --- !u!1 &3965550275072430696
 GameObject:
