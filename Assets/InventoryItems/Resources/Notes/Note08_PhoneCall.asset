@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
+  m_Name: Note08_PhoneCall
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Phone call transcript excerpt
+  itemDescription: "Cause for concern\u2026"
+  fullNoteContent: "P.F: Have you seen the way S-[unintelligible] has been acting?\n\nT.D:
+    No I haven't been going down there much, what\u2019s going on?\n\nP.F: Ever since
+    the experiment she\u2019s been acting\u2026off, like she is barely leaving her
+    office not even to see Cecilia like she usually does, and on the very rare instance
+    that she does she\u2019s acting very paranoid, Peter said he saw her writing
+    down something on her hand, said it looked like the number eight.\n\nT.D: Huh\u2026strange.\nP.F:
+    Director Milford has tried talking to her but even HE hasn\u2019t had much luck,
+    and if she isn\u2019t responding to her own father then who WILL she respond
+    to?\n\nT.D: I mean the experiment didn\u2019t go exactly to plan but I didn\u2019t
+    think it was THAT bad was it?\n\nP.F: That\u2019s what we thought, but get this,
+    I talked to some folks who were closer to her during the experiment and they
+    say they heard her screaming before it was all shut down.\n\nT.D: Screaming?!\n\nP.F:
+    Yeah, I haven\u2019t managed to get one solid consistent story, since everyone
+    was focused on just shutting it down but that\u2019s what I\u2019ve gathered
+    so far.\n\nT.D: This just keeps getting weirder and weirder, I mean maybe she
+    was just freaked out by what was happening?\n\nP.F: That\u2019s what I want to
+    believe too\u2026"
+  type: 1
+  icon: {fileID: 0}
