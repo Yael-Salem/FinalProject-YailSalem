@@ -77,7 +77,7 @@ public class PlayerLook : MonoBehaviour
 
     public void ProcessLook(Vector2 input)
     {
-        if (isOverrideActive)
+        if (isOverrideActive || Time.timeScale == 0)
             return;
 
         if (suppressNextFrame)

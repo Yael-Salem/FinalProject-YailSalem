@@ -18909,85 +18909,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8227751335381866931, guid: f1f36ead82a0b104084aaebc919b2764, type: 3}
   m_PrefabInstance: {fileID: 835524740}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &836985406
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 836985409}
-  - component: {fileID: 836985408}
-  - component: {fileID: 836985407}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &836985407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836985406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
-  m_SendPointerHoverToParent: 1
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
-  m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_PointAction: {fileID: 52962656945483462, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_MoveAction: {fileID: -493925239901137923, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_SubmitAction: {fileID: 0}
-  m_CancelAction: {fileID: -475634938212722161, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_LeftClickAction: {fileID: 8722939939378609349, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_MiddleClickAction: {fileID: 2795474316311995724, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_RightClickAction: {fileID: -2699996537591529423, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_ScrollWheelAction: {fileID: -3029786322276359198, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 3131652398473582899, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: -5697853692678625065, guid: dfdb11765e7e9164c8c93428cdf35d9b, type: 3}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
-  m_CursorLockBehavior: 0
-  m_ScrollDeltaPerTick: 6
---- !u!114 &836985408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836985406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &836985409
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836985406}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &837945973
 GameObject:
   m_ObjectHideFlags: 0
@@ -49613,6 +49534,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91c5a3a6421605d41a25f40681a78edd, type: 3}
+--- !u!1001 &2812043222491202750
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694287050689403741, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807842036901582292, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
+      propertyPath: m_Name
+      value: EventSystem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2db2f5fd12e434e40b8aa72503af1528, type: 3}
 --- !u!1001 &3723698719958008619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50603,7 +50581,7 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 1927693489419148179}
   - {fileID: 2367568265883532359}
-  - {fileID: 836985409}
+  - {fileID: 2812043222491202750}
   - {fileID: 7465165921909605397}
   - {fileID: 1835869052}
   - {fileID: 1188472307}
