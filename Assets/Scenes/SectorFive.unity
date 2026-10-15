@@ -13224,6 +13224,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 819604483}
     m_Modifications:
+    - target: {fileID: 1896011819195515773, guid: fa0e5618ec58caa478b637afe4f901d9, type: 3}
+      propertyPath: sceneName
+      value: Ending
+      objectReference: {fileID: 0}
     - target: {fileID: 2749614657683189678, guid: fa0e5618ec58caa478b637afe4f901d9, type: 3}
       propertyPath: m_Name
       value: LoadSceneTrigger

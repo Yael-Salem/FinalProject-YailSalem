@@ -14,6 +14,7 @@ TagManager:
   - cutscene_floor
   - cutscene_bjorn
   - cutscene_protector
+  - ending_eyes
   layers:
   - Default
   - TransparentFX

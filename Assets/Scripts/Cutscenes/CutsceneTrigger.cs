@@ -74,7 +74,7 @@ public class CutsceneTrigger : MonoBehaviour
     }
     
     // Function to start a specific cutscene with an optional parameter of a cutscene id to use in the cutscene interact script
-    public void StartCutscene(GameObject player, string externalCutsceneId = null)
+    public virtual void StartCutscene(GameObject player, string externalCutsceneId = null)
     {
         Debug.Log($"Cutscene {cutsceneId} starting");
         

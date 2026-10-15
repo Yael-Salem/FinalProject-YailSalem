@@ -10,7 +10,7 @@ public class ElevatorPanel : Interactable, IKeycardUnlockable
     public bool HasCard { get; set; } = false;
 
     // TODO Change scene name from demo end screen to next level scene
-    private string nextSceneName = "DemoEndScreen";
+    private string nextSceneName = "SectorFive";
     
     protected override void Interact()
     {
@@ -30,7 +30,6 @@ public class ElevatorPanel : Interactable, IKeycardUnlockable
 
         Debug.Log("Elevator activated, load next level");
         
-        // TODO Demo end screen, Replace with actual next level
         SceneManager.LoadSceneAsync(nextSceneName);
     }
 }
