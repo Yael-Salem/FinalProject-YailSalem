@@ -434,6 +434,16 @@
             ]
         },
         {
+            "id": "ending",
+            "lines": [
+                {
+                    "speaker": "???",
+                    "text": "...",
+                    "lookTargetTag": "ending_eyes"
+                }
+            ]
+        },
+        {
             "id": "joke_scene",
             "lines": [
                 {

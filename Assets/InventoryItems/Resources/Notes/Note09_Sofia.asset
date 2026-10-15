@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1141843791c3b42bd93196d7a97662, type: 3}
+  m_Name: Note09_Sofia
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: To Sofia
+  itemDescription: Forgetting something?
+  fullNoteContent: "Dear Sofia,\n\nIt sure has been a while hasn\u2019t it? You\u2019ve
+    just been so cooped in that office of yours that you seem to have forgotten about
+    something\u2026Need a hint? ME! Your best friend? I\u2019ve really missed you.\n\nI
+    know I might\u2019ve lost my cool last time I was just having a rough day but
+    I really shouldn\u2019t have taken that out on you and for that I\u2019m really
+    sorry, you were just trying to help after all, and, you did, thank you.\n\nBut
+    regardless I would love to just hang out at the cafeteria again like we used
+    to, I don\u2019t know about you but I\u2019ve missed that stale ass coffee and
+    whatever baked goods our gracious overlords decided to throw down here today.Anyway,
+    please consider my offer and pop by my desk when you decide. It's been a lot
+    more miserable than usual around here without you so I hope to see you soon!\n\nYours
+    forever and always, Cecilia"
+  type: 1
+  icon: {fileID: 0}
