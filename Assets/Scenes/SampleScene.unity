@@ -24825,7 +24825,7 @@ MonoBehaviour:
   openY: 4.36
   closedY: -2.057869
   moveSpeed: 25
-  delaySeconds: 2
+  delaySeconds: 1.5
   audioSource: {fileID: 1126076808}
   closeSound: {fileID: 8300000, guid: 82977968d809db24a9cbe9d5024efa73, type: 3}
   openSound: {fileID: 8300000, guid: ffd50e36f97105d43862108aef7d51ba, type: 3}
