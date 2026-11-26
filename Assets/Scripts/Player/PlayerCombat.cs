@@ -1,11 +1,12 @@
 using System;
-using NUnit.Framework.Constraints;
 using UnityEngine;
+using System.Collections;
 
 public class PlayerCombat : MonoBehaviour
 {
     private Camera cam;
     private Animator animator;
+    private Coroutine blockRoutine;
 
     public float attackDistance = 3f;
     public float attackDelay = 0.4f;
@@ -77,7 +78,7 @@ public class PlayerCombat : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance,
                 attackLayer))
         {
-            EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>(); // Refrence to enemy's health
+            EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>(); // Reference to enemy's health
 
             if (enemyHealth != null)
             {
@@ -102,6 +103,11 @@ public class PlayerCombat : MonoBehaviour
     {
         blocking = false;
         
+        if(blockRoutine != null)
+            StopCoroutine(blockRoutine);
+
+        blockRoutine = null;
+        
         CancelBlockAnim();
     }
     
@@ -110,14 +116,35 @@ public class PlayerCombat : MonoBehaviour
     {
         if (blocking)
         {
+            animator.speed = 1f;
             animator.Play("Weapon_Block", 0, 0f);
+            
+            if(blockRoutine != null)
+                StopCoroutine(blockRoutine);
 
-            float clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
-            Invoke(nameof(FreezeBlockAnimation), clipLength);
+            blockRoutine = StartCoroutine(FreezeBlockAtEnd());
 
         }
     }
-    
+
+    private IEnumerator FreezeBlockAtEnd()
+    {
+        yield return null; // Wait a frame so Play() takes effect
+
+        while (blocking)
+        {
+            AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+
+            if (info.IsName("Weapon_Block") && info.normalizedTime >= 1f)
+            {
+                animator.speed = 0f;
+                yield break;
+            }
+            
+            yield return null;
+        }
+    }
+
     // Freezing the blocking animation at the last frame
     public void FreezeBlockAnimation()
     {
