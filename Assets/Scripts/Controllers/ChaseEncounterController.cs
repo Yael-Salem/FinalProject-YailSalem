@@ -11,7 +11,7 @@ public class ChaseEncounterController : MonoBehaviour
     private ChaseEnemy spawnedEnemy;
     private bool hasStarted = false;
     
-    // Function used to start the sequence (cutscene and then making the enemy chase the player)
+    // Function used to start the sequence (playing a cutscene and then making the enemy chase the player)
     public void StartEncounter()
     {
         if (hasStarted || chaseEnemyPrefab == null || spawnPoint == null || trigger == null)
@@ -34,6 +34,7 @@ public class ChaseEncounterController : MonoBehaviour
         trigger.StartCutscene(player, cutsceneId);
     }
 
+    // Function used to tell the enemy to start chasing the player once the cutscene ends
     private void HandleCutsceneEnded()
     {
         trigger.onCutsceneEnded -= HandleCutsceneEnded;

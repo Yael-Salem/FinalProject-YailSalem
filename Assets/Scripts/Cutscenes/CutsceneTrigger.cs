@@ -55,6 +55,7 @@ public class CutsceneTrigger : MonoBehaviour
             Debug.Log($"Cutscene {cutsceneId} requires previous scene, previous scene was not watched");
             return;
         }
+        
         // Checking if a certain objective needs to be active before playing, and not playing the scene unless it is active
         if (!string.IsNullOrEmpty(requiredObjectiveId)
             && SaveManager.Instance != null

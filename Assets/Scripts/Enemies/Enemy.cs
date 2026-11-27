@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
     private float nextAttackTime = 0f;
     
     // Attack damage variables
-    // Defaulting to a minimum of 2 HP and a max of 7 HP unless changed in the Editor
+    // Defaulting to a minimum of 2 HP and a max of 7 HP
     [SerializeField] private int minAttackDamage = 2;
     [SerializeField] private int maxAttackDamage = 7;
     

@@ -32,10 +32,9 @@ public class SurvivalEncounterController : MonoBehaviour
     {
         if (newPhase != survivalStartPhase)
             return;
-        
-        
     }
 
+    // Function used to spawn enemies at the given spawn points once the relevant game phase starts
     public void SpawnEnemies()
     {
         spawnedEnemies.Clear();
@@ -48,6 +47,7 @@ public class SurvivalEncounterController : MonoBehaviour
         }
     }
     
+    // Function to keep track of how many enemies are left and play a cutscene once the last one dies
     private void HandleEnemyDied(GameObject enemy)
     {
         if (!spawnedEnemies.Contains(enemy))

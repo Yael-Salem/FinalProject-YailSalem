@@ -28,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     private bool isTyping = false;
     private DialogueLine currentData;
     private string currentSentence;
-    private PlayerLook playerLookController; // Controlling the player's head movement if we need them to look a certain way
+    private PlayerLook playerLookController; // Reference to PlayerLook in order to control the player's head movement if we need them to look a certain way
     private PlayerMotor playerMotorController; // Reference to the motor system in case we need to move the player to a specific target during the cutscene
     private System.Action onDialogueCompleteCallback;
     private Coroutine typingCoroutine;

@@ -8,8 +8,7 @@ public class ElevatorPanel : Interactable, IKeycardUnlockable
     private bool hasTriggeredObjective = false;
 
     public bool HasCard { get; set; } = false;
-
-    // TODO Change scene name from demo end screen to next level scene
+    
     private string nextSceneName = "SectorFive";
     
     protected override void Interact()

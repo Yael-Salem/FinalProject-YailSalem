@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class BaseState
 {
-    public Enemy enemy;
+    [SerializeField] protected Enemy enemy;
     
-    public StateMachine stateMachine;
+    [SerializeField] protected StateMachine stateMachine;
     
     public void Setup(StateMachine machine, Enemy enemyRef)
     {

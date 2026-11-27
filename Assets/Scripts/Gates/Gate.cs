@@ -7,7 +7,7 @@ public class Gate : MonoBehaviour
     [SerializeField] private float closedY = -2.057869f;
     [SerializeField] private float moveSpeed = 10f;
     
-    [SerializeField] private float delaySeconds = 7f; // How many seconds to wait before closing the gate
+    [SerializeField] private float delaySeconds = 1f; // How many seconds to wait before closing the gate, defaults to 1 second
     
     // Audio source and sound effect files
     [SerializeField] private AudioSource audioSource;
