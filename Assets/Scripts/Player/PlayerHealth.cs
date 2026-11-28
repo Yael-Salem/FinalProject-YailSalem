@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerCombat = GetComponent<PlayerCombat>();
         
-        // Making the game over screen invisible when the game start
+        // Making the game over screen invisible when the game starts
         if(gameOverScreen != null)
             gameOverScreen.SetActive(false);
     }

@@ -31,12 +31,7 @@ public class PlayerCombat : MonoBehaviour
         animator = GetComponentInChildren<Animator>(true);
 
     }
-
-    void Update()
-    {
-        
-    }
-
+    
     public void Attack()
     {
         if (!readyToAttack || attacking || Time.timeScale == 0f)

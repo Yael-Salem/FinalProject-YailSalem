@@ -26,9 +26,7 @@ public class SaveData
 
 public class SaveManager : MonoBehaviour
 {
-    // Using a singleton pattern
     public static SaveManager Instance { get; private set; }
-    
     
     public SaveData playerSaveData = new SaveData();
     private string saveFilePath;

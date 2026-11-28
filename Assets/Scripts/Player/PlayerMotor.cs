@@ -22,6 +22,7 @@ public class PlayerMotor : MonoBehaviour
     private bool crouching = false;
     private bool lerpCrouch = false;
     private float crouchTimer = 1f;
+    [SerializeField] private float crouchDuration = 1f; // The duration of the crouch animation in seconds
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,17 +40,17 @@ public class PlayerMotor : MonoBehaviour
         {
             crouchTimer += Time.deltaTime;
 
-            float p = crouchTimer / 1;
+            float crouchProgress = crouchTimer / crouchDuration;
 
-            p *= p;
+            crouchProgress *= crouchProgress;
 
             if (crouching)
-                controller.height = Mathf.Lerp(controller.height, 1, p);
+                controller.height = Mathf.Lerp(controller.height, 1, crouchProgress);
 
             else
-                controller.height = Mathf.Lerp(controller.height, 2, p);
+                controller.height = Mathf.Lerp(controller.height, 2, crouchProgress);
 
-            if (p > 1)
+            if (crouchProgress > 1)
             {
                 lerpCrouch = false;
 

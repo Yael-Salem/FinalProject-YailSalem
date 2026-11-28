@@ -11,7 +11,7 @@ public class WeaponAnimation : MonoBehaviour
             playerCombat = GetComponentInParent<PlayerCombat>();
     }
 
-    public void onLastFrameReached()
+    public void OnLastFrameReached()
     {
         if(playerCombat != null)
             playerCombat.FreezeBlockAnimation();
